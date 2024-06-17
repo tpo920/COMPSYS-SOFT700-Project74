@@ -625,5 +625,37 @@ export const toolbox = {
       categorystyle: 'procedure_category',
       custom: 'PROCEDURE',
     },
+    {
+      kind: 'category',
+      name: 'If',
+      categorystyle: 'logic_category',
+      contents: [
+        // Add blocks relevant to "If" category here
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Operators',
+      categorystyle: 'math_category',
+      contents: [
+        // Add blocks relevant to "Operators" category here
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Atom',
+      categorystyle: 'text_category',
+      contents: [
+        // Add blocks relevant to "Atom" category here
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Data',
+      categorystyle: 'list_category',
+      contents: [
+        // Add blocks relevant to "Data" category here
+      ],
+    },
   ],
 };
