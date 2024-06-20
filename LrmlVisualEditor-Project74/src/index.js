@@ -6,7 +6,7 @@
 
 import * as Blockly from 'blockly';
 import {blocks} from './blocks/blocks';
-import {forBlock} from './generators/javascript';
+import {forBlock} from './generators/blockGenerator';
 import {javascriptGenerator} from 'blockly/javascript';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
@@ -29,13 +29,11 @@ const runCode = () => {
   const code = javascriptGenerator.workspaceToCode(ws);
   codeDiv.innerText = code;
 
-  outputDiv.innerHTML = '';
-
-  eval(code);
+  //outputDiv.innerHTML = '';
 };
 
 // Load the initial state from storage and run the code.
-load(ws);
+//load(ws);
 runCode();
 
 // Every time the workspace changes state, save the changes to storage.
@@ -43,7 +41,7 @@ ws.addChangeListener((e) => {
   // UI events are things like scrolling, zooming, etc.
   // No need to save after one of these.
   if (e.isUiEvent) return;
-  save(ws);
+  //save(ws);
 });
 
 // Whenever the workspace changes meaningfully, run the code again.

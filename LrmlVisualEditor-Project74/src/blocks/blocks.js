@@ -19,15 +19,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
       {
         "type": "input_statement",
-        "name": "NAME"
+        "name": "MEMBERS_IF"
       }
     ],
-    "inputsInline": false,
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "ruleml:if",
   },
   {
     "type": "then_block",
@@ -38,15 +36,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
       {
         "type": "input_statement",
-        "name": "NAME"
+        "name": "MEMBERS_THEN"
       }
     ],
-    "inputsInline": false,
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
     "tooltip": "ruleml:then",
-    "helpUrl": ""
   },
   {
     "type": "and_block",
@@ -57,14 +53,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
       {
         "type": "input_statement",
-        "name": "NAME"
+        "name": "MEMBERS_AND"
       }
     ],
-    "inputsInline": false,
     "previousStatement": null,
     "nextStatement": null,
     "colour": 345,
     "tooltip": "ruleml:And",
-    "helpUrl": ""
   }
 ]);
