@@ -24,7 +24,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 230,
+    "style": "if_blocks",
     "tooltip": "ruleml:if",
   },
   {
@@ -41,7 +41,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 230,
+    "style": "if_blocks",
     "tooltip": "ruleml:then",
   },
   {
@@ -58,7 +58,118 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 345,
+    "style": "operator_blocks",
     "tooltip": "ruleml:And",
+  },
+  {
+    "type": "has_block",
+    "message0": "has %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_HAS"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "expression_blocks",
+  },
+  {
+    "type": "is_block",
+    "message0": "is %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_IS"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "expression_blocks",
+  },
+  {
+    "type": "define_block",
+    "message0": "define %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_DEFINE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "expression_blocks",
+  },
+  {
+    "type": "rel_block",
+    "message0": "Rel %1 %2 %3",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "field_input",
+        "name": "MEMBER_REL",
+        "text": ""
+      },
+      {
+        "type": "input_end_row"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "rel_block",
+    "tooltip": "ruleml:Rel",
+  },
+  {
+    "type": "var_block",
+    "message0": "Var %1 %2 %3",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "field_input",
+        "name": "MEMBER_VAR",
+        "text": ""
+      },
+      {
+        "type": "input_end_row"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "var_block",
+    "tooltip": "ruleml:Var",
+  },
+  {
+    "type": "ind_block",
+    "message0": "Ind %1 %2 %3",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "field_input",
+        "name": "MEMBER_IND",
+        "text": ""
+      },
+      {
+        "type": "input_end_row"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "ind_block",
+    "tooltip": "ruleml:Ind",
   }
 ]);
