@@ -66,7 +66,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "message0": "has %1 %2",
     "args0": [
       {
-        "type": "input_end_row"
+        "type": "input_value",
+        "name": "INPUT_HAS"
       },
       {
         "type": "input_statement",
@@ -82,7 +83,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "message0": "is %1 %2",
     "args0": [
       {
-        "type": "input_end_row"
+        "type": "input_value",
+        "name": "INPUT_IS"
       },
       {
         "type": "input_statement",
@@ -98,7 +100,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "message0": "define %1 %2",
     "args0": [
       {
-        "type": "input_end_row"
+        "type": "input_value",
+        "name": "INPUT_DEFINE"
       },
       {
         "type": "input_statement",
@@ -171,5 +174,22 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "ind_block",
     "tooltip": "ruleml:Ind",
+  },
+  {
+    "type": "data_block",
+    "message0": "Data %1 %2",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "MEMBER_DATA",
+        "text": ""
+      },
+      {
+        "type": "input_end_row"
+      }
+    ],
+    "output": null,
+    "style": "data_block",
+    "tooltip": "ruleml:Data",
   }
 ]);

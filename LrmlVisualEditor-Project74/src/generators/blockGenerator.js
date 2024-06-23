@@ -3,6 +3,10 @@
  * Copyright 2023 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
+const Order = {
+  ATOMIC: 0,
+};
+
 export const forBlock = Object.create(null);
 
 // If category
@@ -31,19 +35,25 @@ forBlock['and_block'] = function (block, generator) {
 forBlock['has_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_HAS');
-  const code = 'has {\n' + statementMembers + '\n}';
+  const value = generator.valueToCode(
+    block, 'INPUT_HAS', Order.ATOMIC);
+  const code = `has ${value}{\n${statementMembers}\n}`;
   return code;
 };
 forBlock['is_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_IS');
-  const code = 'is {\n' + statementMembers + '\n}';
+  const value = generator.valueToCode(
+    block, 'INPUT_IS', Order.ATOMIC);
+  const code = `is ${value} {\n${statementMembers}\n}`;
   return code;
 };
 forBlock['define_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_DEFINE');
-  const code = 'define {\n' + statementMembers + '\n}';
+  const value = generator.valueToCode(
+    block, 'INPUT_DEFINE', Order.ATOMIC);
+  const code = `define ${value} {\n${statementMembers}\n}`;
   return code;
 };
 
@@ -62,4 +72,11 @@ forBlock['ind_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_IND');
   const code = `ind(${value})`;
   return code;
+};
+
+// Data category
+forBlock['data_block'] = function (block) {
+  const textValue = block.getFieldValue('MEMBER_DATA');
+  const code = `[data(${textValue})]`;
+  return [code, Order.ATOMIC];
 };

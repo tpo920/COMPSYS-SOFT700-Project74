@@ -81,6 +81,10 @@ export const toolbox = {
       categorystyle: 'list_category',
       contents: [
         // Add blocks relevant to "Data" category here
+        {
+          kind: 'block',
+          type: 'data_block'
+        }
       ],
     },
     {
