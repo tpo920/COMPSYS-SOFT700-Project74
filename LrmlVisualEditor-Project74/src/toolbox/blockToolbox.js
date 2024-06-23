@@ -4,51 +4,91 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/*
-This toolbox contains nearly every single built-in block that Blockly offers,
-in addition to the custom block 'add_text' this sample app adds.
-You probably don't need every single block, and should consider either rewriting
-your toolbox from scratch, or carefully choosing whether you need each block
-listed here.
-*/
-
 export const toolbox = {
   kind: 'categoryToolbox',
   contents: [
     {
       kind: 'category',
-      name: 'Logic',
-      categorystyle: 'logic_category',
-      contents: [
+      name: 'If',
+      categorystyle: 'colour_category',
+      contents: [ 
+        // Add blocks relevant to "If" category here
         {
           kind: 'block',
-          type: 'controls_if',
+          type: 'if_block',
         },
         {
           kind: 'block',
-          type: 'logic_compare',
-        },
-        {
-          kind: 'block',
-          type: 'logic_operation',
-        },
-        {
-          kind: 'block',
-          type: 'logic_negate',
-        },
-        {
-          kind: 'block',
-          type: 'logic_boolean',
-        },
-        {
-          kind: 'block',
-          type: 'logic_null',
-        },
-        {
-          kind: 'block',
-          type: 'logic_ternary',
+          type: 'then_block',
         },
       ],
+    },
+    {
+      kind: 'category',
+      name: 'Operators',
+      categorystyle: 'math_category',
+      contents: [
+        // Add blocks relevant to "Operators" category here
+        {
+          kind: 'block',
+          type: 'and_block',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Expression',
+      categorystyle: 'logic_category',
+      contents: [
+        // Add blocks relevant to "Expression" category here
+        {
+          kind: 'block',
+          type: 'has_block',
+        },
+        {
+          kind: 'block',
+          type: 'is_block',
+        },
+        {
+          kind: 'block',
+          type: 'define_block',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Atom',
+      categorystyle: 'text_category',
+      contents: [
+        // Add blocks relevant to "Atom" category here
+        {
+          kind: 'block',
+          type: 'rel_block',
+        },
+        {
+          kind: 'block',
+          type: 'var_block',
+        },
+        {
+          kind: 'block',
+          type: 'ind_block',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Data',
+      categorystyle: 'list_category',
+      contents: [
+        // Add blocks relevant to "Data" category here
+        {
+          kind: 'block',
+          type: 'data_block'
+        }
+      ],
+    },
+    {
+      kind: 'sep',
     },
     {
       kind: 'category',
@@ -491,20 +531,6 @@ export const toolbox = {
             },
           },
         },
-        {
-          kind: 'block',
-          type: 'add_text',
-          inputs: {
-            TEXT: {
-              shadow: {
-                type: 'text',
-                fields: {
-                  TEXT: 'abc',
-                },
-              },
-            },
-          },
-        },
       ],
     },
     {
@@ -609,53 +635,6 @@ export const toolbox = {
           type: 'lists_reverse',
         },
       ],
-    },
-    {
-      kind: 'sep',
-    },
-    {
-      kind: 'category',
-      name: 'Variables',
-      categorystyle: 'variable_category',
-      custom: 'VARIABLE',
-    },
-    {
-      kind: 'category',
-      name: 'Functions',
-      categorystyle: 'procedure_category',
-      custom: 'PROCEDURE',
-    },
-    {
-      kind: 'category',
-      name: 'If',
-      categorystyle: 'logic_category',
-      contents: [
-        // Add blocks relevant to "If" category here
-      ],
-    },
-    {
-      kind: 'category',
-      name: 'Operators',
-      categorystyle: 'math_category',
-      contents: [
-        // Add blocks relevant to "Operators" category here
-      ],
-    },
-    {
-      kind: 'category',
-      name: 'Atom',
-      categorystyle: 'text_category',
-      contents: [
-        // Add blocks relevant to "Atom" category here
-      ],
-    },
-    {
-      kind: 'category',
-      name: 'Data',
-      categorystyle: 'list_category',
-      contents: [
-        // Add blocks relevant to "Data" category here
-      ],
-    },
+    }
   ],
 };

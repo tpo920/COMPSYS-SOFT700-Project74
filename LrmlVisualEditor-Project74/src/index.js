@@ -5,11 +5,12 @@
  */
 
 import * as Blockly from 'blockly';
-import {blocks} from './blocks/text';
-import {forBlock} from './generators/javascript';
+import {blocks} from './blocks/blocks';
+import {forBlock} from './generators/blockGenerator';
 import {javascriptGenerator} from 'blockly/javascript';
 import {save, load} from './serialization';
-import {toolbox} from './toolbox';
+import {toolbox} from './toolbox/blockToolbox';
+import {CustomTheme} from './theme';
 import './index.css';
 
 // Register the blocks and generator with Blockly
@@ -20,22 +21,34 @@ Object.assign(javascriptGenerator.forBlock, forBlock);
 const codeDiv = document.getElementById('generatedCode').firstChild;
 const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
-const ws = Blockly.inject(blocklyDiv, {toolbox});
+const ws = Blockly.inject(blocklyDiv, 
+  {
+    toolbox,
+    theme: CustomTheme,
+  }
+);
 
 // This function resets the code and output divs, shows the
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
   const code = javascriptGenerator.workspaceToCode(ws);
+  javascriptGenerator.scrub_ = function(block, code, thisOnly) {
+    const nextBlock =
+        block.nextConnection && block.nextConnection.targetBlock();
+    if (nextBlock && !thisOnly) {
+      return code + '\n' + javascriptGenerator.blockToCode(nextBlock);
+    }
+    return code;
+  };
+  
   codeDiv.innerText = code;
 
-  outputDiv.innerHTML = '';
-
-  eval(code);
+  //outputDiv.innerHTML = '';
 };
 
 // Load the initial state from storage and run the code.
-load(ws);
+//load(ws);
 runCode();
 
 // Every time the workspace changes state, save the changes to storage.
@@ -43,7 +56,7 @@ ws.addChangeListener((e) => {
   // UI events are things like scrolling, zooming, etc.
   // No need to save after one of these.
   if (e.isUiEvent) return;
-  save(ws);
+  //save(ws);
 });
 
 // Whenever the workspace changes meaningfully, run the code again.
