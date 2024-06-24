@@ -62,6 +62,40 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "tooltip": "ruleml:And",
   },
   {
+    "type": "or_block",
+    "message0": "Or %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_OR"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "operator_blocks",
+    "tooltip": "ruleml:Or",
+  },
+  {
+    "type": "not_block",
+    "message0": "Not %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_NOT"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "operator_blocks",
+    "tooltip": "ruleml:Not",
+  },
+  {
     "type": "has_block",
     "message0": "has %1 %2",
     "args0": [

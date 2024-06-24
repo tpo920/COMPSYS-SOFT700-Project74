@@ -33,6 +33,14 @@ export const toolbox = {
           kind: 'block',
           type: 'and_block',
         },
+        {
+          kind: 'block',
+          type: 'or_block',
+        },
+        {
+          kind: 'block',
+          type: 'not_block',
+        },
       ],
     },
     {

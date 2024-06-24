@@ -30,6 +30,18 @@ forBlock['and_block'] = function (block, generator) {
   const code = 'and {\n' + statementMembers + '\n}';
   return code;
 };
+forBlock['or_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_OR');
+  const code = 'or {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['not_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_NOT');
+  const code = 'not {\n' + statementMembers + '\n}';
+  return code;
+};
 
 // Expression Category
 forBlock['has_block'] = function (block, generator) {
