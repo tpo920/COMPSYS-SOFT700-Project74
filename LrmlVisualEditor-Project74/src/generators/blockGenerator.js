@@ -92,3 +92,17 @@ forBlock['data_block'] = function (block) {
   const code = `[data(${textValue})]`;
   return [code, Order.ATOMIC];
 };
+
+// Deontic category
+forBlock['obligation_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_OBLIGATION');
+  const code = 'obligation {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['permission_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_PERMISSION');
+  const code = 'permission {\n' + statementMembers + '\n}';
+  return code;
+};

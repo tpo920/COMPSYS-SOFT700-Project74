@@ -96,6 +96,22 @@ export const toolbox = {
       ],
     },
     {
+      kind: 'category',
+      name: 'Deontic',
+      categorystyle: 'deontic_category',
+      contents: [ 
+        // Add blocks relevant to "Deontic" category here
+        {
+          kind: 'block',
+          type: 'obligation_block',
+        },
+        {
+          kind: 'block',
+          type: 'permission_block',
+        },
+      ],
+    },
+    {
       kind: 'sep',
     },
     {

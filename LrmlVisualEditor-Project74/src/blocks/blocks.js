@@ -225,5 +225,39 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "output": null,
     "style": "data_block",
     "tooltip": "ruleml:Data",
-  }
+  },
+  {
+    "type": "obligation_block",
+    "message0": "Obligation %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_OBLIGATION"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "deontic_block",
+    "tooltip": "ruleml:Obligation",
+  },
+  {
+    "type": "permission_block",
+    "message0": "Permission %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_PERMISSION"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "deontic_block",
+    "tooltip": "ruleml:Permission",
+  },
 ]);

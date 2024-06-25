@@ -29,6 +29,9 @@ export const CustomTheme = Blockly.Theme.defineTheme('custom_theme', {
     'data_block': {
       'colourPrimary': '#A6D6B6'
     },
+    'deontic_block': {
+      'colourPrimary': '#EB9B34'
+    },
   },
   'categoryStyles': {
     colour_category: {
@@ -58,6 +61,9 @@ export const CustomTheme = Blockly.Theme.defineTheme('custom_theme', {
     },
     variable_dynamic_category: {
       colour: '#a55b99',
+    },
+    deontic_category: {
+      colour: '#EB9B34',
     },
   },
 
