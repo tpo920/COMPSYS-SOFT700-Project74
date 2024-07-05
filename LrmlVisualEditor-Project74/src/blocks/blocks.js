@@ -241,7 +241,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "style": "deontic_block",
-    "tooltip": "ruleml:Obligation",
+    "tooltip": "lrml:Obligation",
   },
   {
     "type": "permission_block",
@@ -258,6 +258,74 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "style": "deontic_block",
-    "tooltip": "ruleml:Permission",
+    "tooltip": "lrml:Permission",
+  },
+  {
+    "type": "prohibition_block",
+    "message0": "Prohibition %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_PROHIBITION"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "deontic_block",
+    "tooltip": "lrml:Prohibition",
+  },
+  {
+    "type": "right_block",
+    "message0": "Right %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_RIGHT"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "deontic_block",
+    "tooltip": "lrml:Right",
+  },
+  {
+    "type": "violation_block",
+    "message0": "Violation %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_VIOLATION"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "deontic_block",
+    "tooltip": "lrml:Violation",
+  },
+  {
+    "type": "compliance_block",
+    "message0": "Compliance %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_COMPLIANCE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "deontic_block",
+    "tooltip": "lrml:Compliance",
   },
 ]);

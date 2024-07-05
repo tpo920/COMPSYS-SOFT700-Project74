@@ -106,3 +106,27 @@ forBlock['permission_block'] = function (block, generator) {
   const code = 'permission {\n' + statementMembers + '\n}';
   return code;
 };
+forBlock['prohibition_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_PROHIBITION');
+  const code = 'prohibition {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['right_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_RIGHT');
+  const code = 'right {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['violation_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_VIOLATION');
+  const code = 'violation {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['compliance_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_COMPLIANCE');
+  const code = 'compliance {\n' + statementMembers + '\n}';
+  return code;
+}

@@ -109,6 +109,22 @@ export const toolbox = {
           kind: 'block',
           type: 'permission_block',
         },
+        {
+          kind: 'block',
+          type: 'prohibition_block',
+        },
+        {
+          kind: 'block',
+          type: 'right_block',
+        },
+        {
+          kind: 'block',
+          type: 'violation_block',
+        },
+        {
+          kind: 'block',
+          type: 'compliance_block',
+        },
       ],
     },
     {
