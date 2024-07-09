@@ -96,16 +96,15 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "tooltip": "ruleml:Not",
   },
   {
-    "type": "has_block",
-    "message0": "has %1 %2",
+    "type": "expr_block",
+    "message0": "expr %1 %2",
     "args0": [
       {
-        "type": "input_value",
-        "name": "INPUT_HAS"
+        "type": "input_end_row"
       },
       {
         "type": "input_statement",
-        "name": "MEMBERS_HAS"
+        "name": "MEMBERS_EXPR"
       }
     ],
     "previousStatement": null,
@@ -145,6 +144,44 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "style": "expression_blocks",
+  },
+  {
+    "type": "atom_block",
+    "message0": "Atom %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_ATOM"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "atom_block",
+    "tooltip": "lrml:Atom",
+  },
+  {
+    "type": "fun_block",
+    "message0": "Fun %1 %2 %3",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "field_input",
+        "name": "MEMBER_FUN",
+        "text": ""
+      },
+      {
+        "type": "input_end_row"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "fun_block",
+    "tooltip": "ruleml:Fun",
   },
   {
     "type": "rel_block",
@@ -211,8 +248,11 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "data_block",
-    "message0": "Data %1 %2",
+    "message0": "Data %1 %2 %3",
     "args0": [
+      {
+        "type": "input_end_row"
+      },
       {
         "type": "field_input",
         "name": "MEMBER_DATA",
@@ -222,7 +262,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         "type": "input_end_row"
       }
     ],
-    "output": null,
+    "previousStatement": null,
+    "nextStatement": null,
     "style": "data_block",
     "tooltip": "ruleml:Data",
   },
@@ -327,5 +368,107 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "deontic_block",
     "tooltip": "lrml:Compliance",
+  },
+  {
+    "type": "constitutive_block",
+    "message0": "Constitutive %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_CONSTITUTIVE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "statement_block",
+    "tooltip": "lrml:constitutive",
+  },
+  {
+    "type": "prescriptive_block",
+    "message0": "Prescriptive %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_PRESCRIPTIVE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "statement_block",
+    "tooltip": "lrml:prescriptive",
+  },
+  {
+    "type": "override_block",
+    "message0": "Override %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_OVERRIDE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "statement_block",
+    "tooltip": "lrml:override",
+  },
+  {
+    "type": "penalty_block",
+    "message0": "Penalty %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_PENALTY"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "statement_block",
+    "tooltip": "lrml:penalty",
+  },
+  {
+    "type": "reparation_block",
+    "message0": "Reparation %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_REPARATION"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "statement_block",
+    "tooltip": "lrml:reparation",
+  },
+  {
+    "type": "factual_block",
+    "message0": "Factual %1 %2",
+    "args0": [
+      {
+        "type": "input_end_row"
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_FACTUAL"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "statement_block",
+    "tooltip": "lrml:factual",
   },
 ]);

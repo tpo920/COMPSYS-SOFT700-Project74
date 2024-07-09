@@ -51,7 +51,7 @@ export const toolbox = {
         // Add blocks relevant to "Expression" category here
         {
           kind: 'block',
-          type: 'has_block',
+          type: 'expr_block',
         },
         {
           kind: 'block',
@@ -69,6 +69,14 @@ export const toolbox = {
       categorystyle: 'text_category',
       contents: [
         // Add blocks relevant to "Atom" category here
+        {
+          kind: 'block',
+          type: 'atom_block',
+        },
+        {
+          kind: 'block',
+          type: 'fun_block',
+        },
         {
           kind: 'block',
           type: 'rel_block',
@@ -124,6 +132,38 @@ export const toolbox = {
         {
           kind: 'block',
           type: 'compliance_block',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Statement',
+      categorystyle: 'statement_category',
+      contents: [ 
+        // Add blocks relevant to "Deontic" category here
+        {
+          kind: 'block',
+          type: 'constitutive_block',
+        },
+        {
+          kind: 'block',
+          type: 'prescriptive_block',
+        },
+        {
+          kind: 'block',
+          type: 'override_block',
+        },
+        {
+          kind: 'block',
+          type: 'penalty_block',
+        },
+        {
+          kind: 'block',
+          type: 'reparation_block',
+        },
+        {
+          kind: 'block',
+          type: 'factual_block',
         },
       ],
     },

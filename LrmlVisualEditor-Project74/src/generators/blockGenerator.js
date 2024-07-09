@@ -44,12 +44,10 @@ forBlock['not_block'] = function (block, generator) {
 };
 
 // Expression Category
-forBlock['has_block'] = function (block, generator) {
+forBlock['expr_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_HAS');
-  const value = generator.valueToCode(
-    block, 'INPUT_HAS', Order.ATOMIC);
-  const code = `has ${value}{\n${statementMembers}\n}`;
+    generator.statementToCode(block, 'MEMBERS_EXPR');
+  const code = 'expr {\n' + statementMembers + '\n}';
   return code;
 };
 forBlock['is_block'] = function (block, generator) {
@@ -70,6 +68,17 @@ forBlock['define_block'] = function (block, generator) {
 };
 
 // Atom category
+forBlock['atom_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_ATOM');
+  const code = 'atom {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['fun_block'] = function (block) {
+  const value = block.getFieldValue('MEMBER_FUN');
+  const code = `fun(${value})`;
+  return code;
+};
 forBlock['rel_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_REL');
   const code = `rel(${value})`;
@@ -88,9 +97,9 @@ forBlock['ind_block'] = function (block) {
 
 // Data category
 forBlock['data_block'] = function (block) {
-  const textValue = block.getFieldValue('MEMBER_DATA');
-  const code = `[data(${textValue})]`;
-  return [code, Order.ATOMIC];
+  const value = block.getFieldValue('MEMBER_DATA');
+  const code = `data(${value})`;
+  return code;
 };
 
 // Deontic category
@@ -128,5 +137,43 @@ forBlock['compliance_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_COMPLIANCE');
   const code = 'compliance {\n' + statementMembers + '\n}';
+  return code;
+}
+
+// Statement category
+forBlock['constitutive_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_CONSTITUTIVE');
+  const code = 'consitutive {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['prescriptive_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_PRESCRIPTIVE');
+  const code = 'prescriptive {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['override_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_OVERRIDE');
+  const code = 'override {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['penalty_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_PENALTY');
+  const code = 'penalty {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['reparation_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_REPARATION');
+  const code = 'reparation {\n' + statementMembers + '\n}';
+  return code;
+};
+forBlock['factual_block'] = function (block, generator) {
+  const statementMembers =
+    generator.statementToCode(block, 'MEMBERS_FACTUAL');
+  const code = 'factual {\n' + statementMembers + '\n}';
   return code;
 }
