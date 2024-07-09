@@ -33,6 +33,14 @@ export const toolbox = {
           kind: 'block',
           type: 'and_block',
         },
+        {
+          kind: 'block',
+          type: 'or_block',
+        },
+        {
+          kind: 'block',
+          type: 'not_block',
+        },
       ],
     },
     {
@@ -43,7 +51,7 @@ export const toolbox = {
         // Add blocks relevant to "Expression" category here
         {
           kind: 'block',
-          type: 'has_block',
+          type: 'expr_block',
         },
         {
           kind: 'block',
@@ -61,6 +69,14 @@ export const toolbox = {
       categorystyle: 'text_category',
       contents: [
         // Add blocks relevant to "Atom" category here
+        {
+          kind: 'block',
+          type: 'atom_block',
+        },
+        {
+          kind: 'block',
+          type: 'fun_block',
+        },
         {
           kind: 'block',
           type: 'rel_block',
@@ -85,6 +101,70 @@ export const toolbox = {
           kind: 'block',
           type: 'data_block'
         }
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Deontic',
+      categorystyle: 'deontic_category',
+      contents: [ 
+        // Add blocks relevant to "Deontic" category here
+        {
+          kind: 'block',
+          type: 'obligation_block',
+        },
+        {
+          kind: 'block',
+          type: 'permission_block',
+        },
+        {
+          kind: 'block',
+          type: 'prohibition_block',
+        },
+        {
+          kind: 'block',
+          type: 'right_block',
+        },
+        {
+          kind: 'block',
+          type: 'violation_block',
+        },
+        {
+          kind: 'block',
+          type: 'compliance_block',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Statement',
+      categorystyle: 'statement_category',
+      contents: [ 
+        // Add blocks relevant to "Deontic" category here
+        {
+          kind: 'block',
+          type: 'constitutive_block',
+        },
+        {
+          kind: 'block',
+          type: 'prescriptive_block',
+        },
+        {
+          kind: 'block',
+          type: 'override_block',
+        },
+        {
+          kind: 'block',
+          type: 'penalty_block',
+        },
+        {
+          kind: 'block',
+          type: 'reparation_block',
+        },
+        {
+          kind: 'block',
+          type: 'factual_block',
+        },
       ],
     },
     {

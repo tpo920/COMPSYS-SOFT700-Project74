@@ -17,6 +17,12 @@ export const CustomTheme = Blockly.Theme.defineTheme('custom_theme', {
     'expression_blocks': {
       'colourPrimary': '#3e4772'
     },
+    'atom_block': {
+      'colourPrimary': '#D7ABE2'
+    },
+    'fun_block': {
+      'colourPrimary': '#D7ABE2'
+    },
     'rel_block': {
       'colourPrimary': '#D7ABE2'
     },
@@ -28,6 +34,12 @@ export const CustomTheme = Blockly.Theme.defineTheme('custom_theme', {
     },
     'data_block': {
       'colourPrimary': '#A6D6B6'
+    },
+    'deontic_block': {
+      'colourPrimary': '#EB9B34'
+    },
+    'statement_block': {
+      'colourPrimary': '#5ba59f'
     },
   },
   'categoryStyles': {
@@ -58,6 +70,12 @@ export const CustomTheme = Blockly.Theme.defineTheme('custom_theme', {
     },
     variable_dynamic_category: {
       colour: '#a55b99',
+    },
+    deontic_category: {
+      colour: '#EB9B34',
+    },
+    statement_category: {
+      colour: '#5ba59f',
     },
   },
 
