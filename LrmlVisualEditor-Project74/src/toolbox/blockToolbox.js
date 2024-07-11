@@ -17,10 +17,6 @@ export const toolbox = {
           kind: 'block',
           type: 'if_block',
         },
-        {
-          kind: 'block',
-          type: 'then_block',
-        },
       ],
     },
     {

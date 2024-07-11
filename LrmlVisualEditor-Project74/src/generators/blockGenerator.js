@@ -3,23 +3,15 @@
  * Copyright 2023 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
-const Order = {
-  ATOMIC: 0,
-};
-
 export const forBlock = Object.create(null);
 
-// If category
+// If Then category
 forBlock['if_block'] = function (block, generator) {
-  const statementMembers =
+  const ifStatementMembers =
     generator.statementToCode(block, 'MEMBERS_IF');
-  const code = 'if {\n' + statementMembers + '\n}';
-  return code;
-};
-forBlock['then_block'] = function (block, generator) {
-  const statementMembers =
+  const thenStatementMembers =
     generator.statementToCode(block, 'MEMBERS_THEN');
-  const code = 'then {\n' + statementMembers + '\n}';
+  const code = 'if {\n' + ifStatementMembers + '\n}\nthen {\n' + thenStatementMembers + '\n}';
   return code;
 };
 

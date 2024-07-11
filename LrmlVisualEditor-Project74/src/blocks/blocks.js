@@ -12,31 +12,27 @@ import * as Blockly from 'blockly/core';
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   {
     "type": "if_block",
-    "message0": "If %1",
+    "message0": "If %1 %2 Then %3 %4",
     "args0": [
+      {
+        "type": "input_end_row",
+      },
       {
         "type": "input_statement",
         "name": "MEMBERS_IF"
-      }
+      },
+      {
+        "type": "input_end_row",
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_THEN"
+      },
     ],
     "previousStatement": null,
     "nextStatement": null,
     "style": "if_blocks",
     "tooltip": "ruleml:if",
-  },
-  {
-    "type": "then_block",
-    "message0": "Then %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_THEN"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "if_blocks",
-    "tooltip": "ruleml:then",
   },
   {
     "type": "and_block",
@@ -112,9 +108,22 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "message0": "Fun %1",
     "args0": [
       {
-        "type": "field_input",
+        "type": "field_dropdown",
         "name": "MEMBER_FUN",
-        "text": ""
+        "options":[
+          [
+            "has",
+            "has"
+          ],
+          [
+            "is",
+            "is"
+          ],
+          [
+            "by",
+            "by"
+          ]
+        ]
       }
     ],
     "previousStatement": null,
