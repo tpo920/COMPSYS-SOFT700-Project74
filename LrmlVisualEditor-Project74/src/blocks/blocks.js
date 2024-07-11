@@ -12,15 +12,22 @@ import * as Blockly from 'blockly/core';
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   {
     "type": "if_block",
-    "message0": "If %1 %2",
+    "message0": "If %1 %2 Then %3 %4",
     "args0": [
       {
-        "type": "input_end_row"
+        "type": "input_end_row",
       },
       {
         "type": "input_statement",
         "name": "MEMBERS_IF"
-      }
+      },
+      {
+        "type": "input_end_row",
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_THEN"
+      },
     ],
     "previousStatement": null,
     "nextStatement": null,
@@ -28,29 +35,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "tooltip": "ruleml:if",
   },
   {
-    "type": "then_block",
-    "message0": "Then %1 %2",
-    "args0": [
-      {
-        "type": "input_end_row"
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_THEN"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "if_blocks",
-    "tooltip": "ruleml:then",
-  },
-  {
     "type": "and_block",
-    "message0": "And %1 %2",
+    "message0": "And %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_AND"
@@ -63,11 +50,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "or_block",
-    "message0": "Or %1 %2",
+    "message0": "Or %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_OR"
@@ -80,11 +64,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "not_block",
-    "message0": "Not %1 %2",
+    "message0": "Not %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_NOT"
@@ -97,11 +78,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "expr_block",
-    "message0": "expr %1 %2",
+    "message0": "Expr %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_EXPR"
@@ -112,46 +90,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "style": "expression_blocks",
   },
   {
-    "type": "is_block",
-    "message0": "is %1 %2",
-    "args0": [
-      {
-        "type": "input_value",
-        "name": "INPUT_IS"
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_IS"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "expression_blocks",
-  },
-  {
-    "type": "define_block",
-    "message0": "define %1 %2",
-    "args0": [
-      {
-        "type": "input_value",
-        "name": "INPUT_DEFINE"
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_DEFINE"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "expression_blocks",
-  },
-  {
     "type": "atom_block",
-    "message0": "Atom %1 %2",
+    "message0": "Atom %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_ATOM"
@@ -164,18 +105,25 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "fun_block",
-    "message0": "Fun %1 %2 %3",
+    "message0": "Fun %1",
     "args0": [
       {
-        "type": "input_end_row"
-      },
-      {
-        "type": "field_input",
+        "type": "field_dropdown",
         "name": "MEMBER_FUN",
-        "text": ""
-      },
-      {
-        "type": "input_end_row"
+        "options":[
+          [
+            "has",
+            "has"
+          ],
+          [
+            "is",
+            "is"
+          ],
+          [
+            "by",
+            "by"
+          ]
+        ]
       }
     ],
     "previousStatement": null,
@@ -185,18 +133,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "rel_block",
-    "message0": "Rel %1 %2 %3",
+    "message0": "Rel %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_REL",
         "text": ""
-      },
-      {
-        "type": "input_end_row"
       }
     ],
     "previousStatement": null,
@@ -206,18 +148,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "var_block",
-    "message0": "Var %1 %2 %3",
+    "message0": "Var %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_VAR",
         "text": ""
-      },
-      {
-        "type": "input_end_row"
       }
     ],
     "previousStatement": null,
@@ -227,18 +163,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "ind_block",
-    "message0": "Ind %1 %2 %3",
+    "message0": "Ind %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_IND",
         "text": ""
-      },
-      {
-        "type": "input_end_row"
       }
     ],
     "previousStatement": null,
@@ -248,18 +178,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "data_block",
-    "message0": "Data %1 %2 %3",
+    "message0": "Data %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_DATA",
         "text": ""
-      },
-      {
-        "type": "input_end_row"
       }
     ],
     "previousStatement": null,
@@ -269,11 +193,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "obligation_block",
-    "message0": "Obligation %1 %2",
+    "message0": "Obligation %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_OBLIGATION"
@@ -286,11 +207,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "permission_block",
-    "message0": "Permission %1 %2",
+    "message0": "Permission %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_PERMISSION"
@@ -303,11 +221,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "prohibition_block",
-    "message0": "Prohibition %1 %2",
+    "message0": "Prohibition %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_PROHIBITION"
@@ -320,11 +235,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "right_block",
-    "message0": "Right %1 %2",
+    "message0": "Right %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_RIGHT"
@@ -337,11 +249,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "violation_block",
-    "message0": "Violation %1 %2",
+    "message0": "Violation %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_VIOLATION"
@@ -354,11 +263,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "compliance_block",
-    "message0": "Compliance %1 %2",
+    "message0": "Compliance %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_COMPLIANCE"
@@ -371,11 +277,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "constitutive_block",
-    "message0": "Constitutive %1 %2",
+    "message0": "Constitutive %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_CONSTITUTIVE"
@@ -388,11 +291,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "prescriptive_block",
-    "message0": "Prescriptive %1 %2",
+    "message0": "Prescriptive %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_PRESCRIPTIVE"
@@ -405,11 +305,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "override_block",
-    "message0": "Override %1 %2",
+    "message0": "Override %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_OVERRIDE"
@@ -422,11 +319,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "penalty_block",
-    "message0": "Penalty %1 %2",
+    "message0": "Penalty %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_PENALTY"
@@ -439,11 +333,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "reparation_block",
-    "message0": "Reparation %1 %2",
+    "message0": "Reparation %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_REPARATION"
@@ -456,11 +347,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "factual_block",
-    "message0": "Factual %1 %2",
+    "message0": "Factual %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "input_statement",
         "name": "MEMBERS_FACTUAL"
