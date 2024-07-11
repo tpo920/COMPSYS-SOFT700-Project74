@@ -82,45 +82,11 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "expr_block",
-    "message0": "expr %1",
+    "message0": "Expr %1",
     "args0": [
       {
         "type": "input_statement",
         "name": "MEMBERS_EXPR"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "expression_blocks",
-  },
-  {
-    "type": "is_block",
-    "message0": "is %1 %2",
-    "args0": [
-      {
-        "type": "input_value",
-        "name": "INPUT_IS"
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_IS"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "expression_blocks",
-  },
-  {
-    "type": "define_block",
-    "message0": "define %1 %2",
-    "args0": [
-      {
-        "type": "input_value",
-        "name": "INPUT_DEFINE"
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_DEFINE"
       }
     ],
     "previousStatement": null,

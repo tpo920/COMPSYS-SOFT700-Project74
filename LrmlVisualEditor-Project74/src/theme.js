@@ -24,13 +24,13 @@ export const CustomTheme = Blockly.Theme.defineTheme('custom_theme', {
       'colourPrimary': '#D7ABE2'
     },
     'rel_block': {
-      'colourPrimary': '#D7ABE2'
+      'colourPrimary': '#6c5671'
     },
     'var_block': {
       'colourPrimary': '#6c5671'
     },
     'ind_block': {
-      'colourPrimary': '#E18AAA'
+      'colourPrimary': '#6c5671'
     },
     'data_block': {
       'colourPrimary': '#A6D6B6'

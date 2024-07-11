@@ -53,14 +53,6 @@ export const toolbox = {
           kind: 'block',
           type: 'expr_block',
         },
-        {
-          kind: 'block',
-          type: 'is_block',
-        },
-        {
-          kind: 'block',
-          type: 'define_block',
-        },
       ],
     },
     {

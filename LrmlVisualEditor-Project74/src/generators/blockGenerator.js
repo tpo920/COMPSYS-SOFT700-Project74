@@ -50,22 +50,6 @@ forBlock['expr_block'] = function (block, generator) {
   const code = 'expr {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['is_block'] = function (block, generator) {
-  const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_IS');
-  const value = generator.valueToCode(
-    block, 'INPUT_IS', Order.ATOMIC);
-  const code = `is ${value} {\n${statementMembers}\n}`;
-  return code;
-};
-forBlock['define_block'] = function (block, generator) {
-  const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_DEFINE');
-  const value = generator.valueToCode(
-    block, 'INPUT_DEFINE', Order.ATOMIC);
-  const code = `define ${value} {\n${statementMembers}\n}`;
-  return code;
-};
 
 // Atom category
 forBlock['atom_block'] = function (block, generator) {
