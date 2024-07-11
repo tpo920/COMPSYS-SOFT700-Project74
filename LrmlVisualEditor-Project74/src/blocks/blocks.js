@@ -164,19 +164,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "fun_block",
-    "message0": "Fun %1 %2 %3",
+    "message0": "Fun %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_FUN",
         "text": ""
       },
-      {
-        "type": "input_end_row"
-      }
     ],
     "previousStatement": null,
     "nextStatement": null,
@@ -185,19 +179,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "rel_block",
-    "message0": "Rel %1 %2 %3",
+    "message0": "Rel %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_REL",
         "text": ""
       },
-      {
-        "type": "input_end_row"
-      }
     ],
     "previousStatement": null,
     "nextStatement": null,
@@ -206,19 +194,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "var_block",
-    "message0": "Var %1 %2 %3",
+    "message0": "Var %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_VAR",
         "text": ""
       },
-      {
-        "type": "input_end_row"
-      }
     ],
     "previousStatement": null,
     "nextStatement": null,
@@ -227,19 +209,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "ind_block",
-    "message0": "Ind %1 %2 %3",
+    "message0": "Ind %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_IND",
         "text": ""
       },
-      {
-        "type": "input_end_row"
-      }
     ],
     "previousStatement": null,
     "nextStatement": null,
@@ -248,19 +224,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     "type": "data_block",
-    "message0": "Data %1 %2 %3",
+    "message0": "Data %1",
     "args0": [
-      {
-        "type": "input_end_row"
-      },
       {
         "type": "field_input",
         "name": "MEMBER_DATA",
         "text": ""
       },
-      {
-        "type": "input_end_row"
-      }
     ],
     "previousStatement": null,
     "nextStatement": null,
