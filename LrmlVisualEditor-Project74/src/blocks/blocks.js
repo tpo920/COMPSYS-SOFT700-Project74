@@ -128,9 +128,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "fun_block",
     "tooltip": "ruleml:Fun",
-    "extensions": [
-      "atom_block_validation",
-    ],
   },
   {
     "type": "rel_block",
@@ -200,9 +197,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "data_block",
     "tooltip": "ruleml:Data",
-    "extensions": [
-      "atom_block_validation",
-    ],
   },
   {
     "type": "obligation_block",
