@@ -5,12 +5,12 @@
  */
 
 import * as Blockly from 'blockly';
-import {blocks} from './blocks/blocks';
-import {forBlock} from './generators/blockGenerator';
-import {javascriptGenerator} from 'blockly/javascript';
-import {save, load} from './serialization';
-import {toolbox} from './toolbox/blockToolbox';
-import {CustomTheme} from './theme';
+import { blocks } from './blocks/blocks';
+import { forBlock } from './generators/blockGenerator';
+import { javascriptGenerator } from 'blockly/javascript';
+import { save, load } from './serialization';
+import { toolbox } from './toolbox/blockToolbox';
+import { CustomTheme } from './theme';
 import './index.css';
 
 // Register the blocks and generator with Blockly
@@ -21,7 +21,7 @@ Object.assign(javascriptGenerator.forBlock, forBlock);
 const codeDiv = document.getElementById('generatedCode').firstChild;
 const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
-const ws = Blockly.inject(blocklyDiv, 
+const ws = Blockly.inject(blocklyDiv,
   {
     toolbox,
     theme: CustomTheme,
@@ -33,15 +33,15 @@ const ws = Blockly.inject(blocklyDiv,
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
   const code = javascriptGenerator.workspaceToCode(ws);
-  javascriptGenerator.scrub_ = function(block, code, thisOnly) {
+  javascriptGenerator.scrub_ = function (block, code, thisOnly) {
     const nextBlock =
-        block.nextConnection && block.nextConnection.targetBlock();
+      block.nextConnection && block.nextConnection.targetBlock();
     if (nextBlock && !thisOnly) {
       return code + '\n' + javascriptGenerator.blockToCode(nextBlock);
     }
     return code;
   };
-  
+
   codeDiv.innerText = code;
 
   //outputDiv.innerHTML = '';
@@ -56,6 +56,7 @@ ws.addChangeListener((e) => {
   // UI events are things like scrolling, zooming, etc.
   // No need to save after one of these.
   if (e.isUiEvent) return;
+  // Temp comment out save function
   //save(ws);
 });
 

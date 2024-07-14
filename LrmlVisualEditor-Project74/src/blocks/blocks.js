@@ -6,9 +6,7 @@
 
 import * as Blockly from 'blockly/core';
 
-// Create the block definitions for the JSON-only blocks.
-// This does not register their definitions with Blockly.
-// This file has no side effects!
+// Custom blocks for Visual LegalRule Editor
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   {
     "type": "if_block",
@@ -145,6 +143,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "rel_block",
     "tooltip": "ruleml:Rel",
+    "extensions": [
+      "atom_block_validation",
+    ],
   },
   {
     "type": "var_block",
@@ -160,6 +161,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "var_block",
     "tooltip": "ruleml:Var",
+    "extensions": [
+      "atom_block_validation",
+    ],
   },
   {
     "type": "ind_block",
@@ -175,6 +179,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "nextStatement": null,
     "style": "ind_block",
     "tooltip": "ruleml:Ind",
+    "extensions": [
+      "atom_block_validation",
+    ],
   },
   {
     "type": "data_block",
@@ -360,3 +367,28 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     "tooltip": "lrml:factual",
   },
 ]);
+
+// Block validators
+Blockly.Extensions.register('atom_block_validation', function () {
+  let valid = false;
+  this.setOnChange(function (changeEvent) {
+    let surrond_parent_block = this.getSurroundParent();
+    console.log()
+    if (surrond_parent_block && surrond_parent_block.type === "atom_block") {
+      this.setWarningText(null);
+      valid = true;
+    } else {
+      this.setWarningText('Must have a parent Atom block.');
+      valid = false;
+    }
+    // Disable invalid blocks (unless it's in a toolbox flyout,
+    // since you can't drag disabled blocks to your workspace).
+    if (!this.isInFlyout) {
+      const initialGroup = Blockly.Events.getGroup();
+      // Make it so the move and the disable event get undone together.
+      Blockly.Events.setGroup(changeEvent.group);
+      this.setEnabled(valid);
+      Blockly.Events.setGroup(initialGroup);
+    }
+  });
+});
