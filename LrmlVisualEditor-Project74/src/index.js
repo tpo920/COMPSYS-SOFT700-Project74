@@ -74,3 +74,42 @@ ws.addChangeListener((e) => {
   }
   runCode();
 });
+
+ws.addChangeListener((e) => {
+  if (e.type == Blockly.Events.BLOCK_CREATE) {
+    var block = ws.getBlockById(e.blockId);
+    if (block.type === 'atom_block') {
+      addSubBlocks(block);
+    }
+  }
+});
+
+function addSubBlocks(atomBlock) {
+  // Create new blocks
+  var relBlock = ws.newBlock('rel_block');
+  var varBlock = ws.newBlock('var_block');
+  var indBlock = ws.newBlock('ind_block');
+
+  // Initialize and render blocks
+  relBlock.initSvg();
+  varBlock.initSvg();
+  indBlock.initSvg();
+  relBlock.render();
+  varBlock.render();
+  indBlock.render();
+
+  // Connect blocks inside atomBlock
+  var membersInput = atomBlock.getInput('MEMBERS_ATOM');
+  if (membersInput) {
+    var membersConnection = membersInput.connection;
+    if (membersConnection) {
+      membersConnection.connect(relBlock.previousConnection);
+      relBlock.nextConnection.connect(varBlock.previousConnection);
+      varBlock.nextConnection.connect(indBlock.previousConnection);
+    } else {
+      console.error('Connection on MEMBERS_ATOM input is not available.');
+    }
+  } else {
+    console.error('MEMBERS_ATOM input is not found on atomBlock.');
+  }
+}
