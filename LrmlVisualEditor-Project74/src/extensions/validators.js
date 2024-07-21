@@ -5,11 +5,11 @@ Blockly.Extensions.register('atom_block_validation', function () {
     let valid = false;
     this.setOnChange(function (changeEvent) {
       let surrond_parent_block = this.getSurroundParent();
-      if (surrond_parent_block && surrond_parent_block.type === "atom_block") {
+      if (surrond_parent_block && (surrond_parent_block.type === "atom_block" || surrond_parent_block.type === "expr_block")) {
         this.setWarningText(null);
         valid = true;
       } else {
-        this.setWarningText('Must have a parent Atom block.');
+        this.setWarningText('Must have a parent Atom or Expr block.');
         valid = false;
       }
       // Disable invalid blocks (unless it's in a toolbox flyout,
