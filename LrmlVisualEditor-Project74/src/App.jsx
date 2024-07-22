@@ -4,6 +4,8 @@ import { useBlocklyWorkspace } from 'react-blockly';
 import { javascriptGenerator } from 'blockly/javascript';
 import { toolbox } from './toolbox/blockToolbox';
 import NavBar from './components/NavBar';
+import TextBox from './components/TextBox';
+import Box from '@mui/material/Box';
 import "./generators/blockGenerator";
 import "./extensions/validators";
 import "./blocks/blocks";
@@ -11,7 +13,7 @@ import './App.css';
 
 function App() {
   const [ws, setWs] = useState(null);
-  const [javascriptCode, setJavascriptCode] = useState("");
+  const [blockCode, setBlockCode] = useState("");
   const blocklyRef = useRef(null);
 
   useBlocklyWorkspace({
@@ -42,14 +44,14 @@ function App() {
       }
       return code;
     };
-    setJavascriptCode(code);
+    setBlockCode(code);
   }
 
   useEffect(() => {
     if (ws) {
       ws.addChangeListener((e) => {
         if (e.type == Blockly.Events.BLOCK_CREATE) {
-          var block = ws.getBlockById(e.blockId);
+          const block = ws.getBlockById(e.blockId);
           if (block.type === 'atom_block') {
             addSubBlocks(block);
           }
@@ -60,9 +62,9 @@ function App() {
 
   function addSubBlocks(atomBlock) {
     // Create new blocks
-    var relBlock = ws.newBlock('rel_block');
-    var varBlock = ws.newBlock('var_block');
-    var indBlock = ws.newBlock('ind_block');
+    const relBlock = ws.newBlock('rel_block');
+    const varBlock = ws.newBlock('var_block');
+    const indBlock = ws.newBlock('ind_block');
 
     // Initialize and render blocks
     relBlock.initSvg();
@@ -73,9 +75,9 @@ function App() {
     indBlock.render();
 
     // Connect blocks inside atomBlock
-    var membersInput = atomBlock.getInput('MEMBERS_ATOM');
+    const membersInput = atomBlock.getInput('MEMBERS_ATOM');
     if (membersInput) {
-      var membersConnection = membersInput.connection;
+      const membersConnection = membersInput.connection;
       if (membersConnection) {
         membersConnection.connect(relBlock.previousConnection);
         relBlock.nextConnection.connect(varBlock.previousConnection);
@@ -93,12 +95,7 @@ function App() {
       <NavBar />
       <div id="pageContainer">
         <div className="blockly-workspace" ref={blocklyRef} />
-        <textarea
-          id="code"
-          style={{ height: "400px", width: "400px" }}
-          value={javascriptCode}
-          readOnly
-        ></textarea>
+        <TextBox value={blockCode} />
       </div>
     </>
 
