@@ -3,6 +3,7 @@ import * as Blockly from "blockly/core";
 import { useBlocklyWorkspace } from 'react-blockly';
 import { javascriptGenerator } from 'blockly/javascript';
 import { toolbox } from './toolbox/blockToolbox';
+import NavBar from './components/NavBar';
 import "./generators/blockGenerator";
 import "./extensions/validators";
 import "./blocks/blocks";
@@ -38,7 +39,7 @@ function App() {
         block.nextConnection && block.nextConnection.targetBlock();
       if (nextBlock && !thisOnly) {
         return code + '\n' + javascriptGenerator.blockToCode(nextBlock);
-      } 
+      }
       return code;
     };
     setJavascriptCode(code);
@@ -88,15 +89,19 @@ function App() {
   }
 
   return (
-    <div id="pageContainer">
-      <div className="blockly-workspace" ref={blocklyRef} />
-      <textarea
-        id="code"
-        style={{ height: "200px", width: "400px" }}
-        value={javascriptCode}
-        readOnly
-      ></textarea>
-    </div>
+    <>
+      <NavBar />
+      <div id="pageContainer">
+        <div className="blockly-workspace" ref={blocklyRef} />
+        <textarea
+          id="code"
+          style={{ height: "400px", width: "400px" }}
+          value={javascriptCode}
+          readOnly
+        ></textarea>
+      </div>
+    </>
+
   )
 };
 
