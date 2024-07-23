@@ -1,13 +1,7 @@
-/**
- * @license
- * Copyright 2023 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import * as Blockly from 'blockly/core';
 
 // Custom blocks for Visual LegalRule Editor
-export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
+Blockly.defineBlocksWithJsonArray([
   {
     "type": "if_block",
     "message0": "If %1 %2 Then %3 %4",
@@ -29,7 +23,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "if_blocks",
+    "colour": "#8AB2FF",  
     "tooltip": "ruleml:if",
   },
   {
@@ -43,7 +37,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "operator_blocks",
+    "colour": "#FF8A8A", 
     "tooltip": "ruleml:And",
   },
   {
@@ -57,7 +51,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "operator_blocks",
+    "colour": "#FF8A8A", 
     "tooltip": "ruleml:Or",
   },
   {
@@ -71,7 +65,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "operator_blocks",
+    "colour": "#FF8A8A", 
     "tooltip": "ruleml:Not",
   },
   {
@@ -85,7 +79,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "expression_blocks",
+    "colour": "#3e4772", 
+    "tooltip": "ruleml:Expr",
   },
   {
     "type": "atom_block",
@@ -98,7 +93,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "atom_block",
+    "colour": "#D7ABE2", 
     "tooltip": "lrml:Atom",
   },
   {
@@ -126,7 +121,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "fun_block",
+    "colour": "#D7ABE2", 
     "tooltip": "ruleml:Fun",
   },
   {
@@ -141,7 +136,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "rel_block",
+    "colour": "#7f468c",
     "tooltip": "ruleml:Rel",
     "extensions": [
       "atom_block_validation",
@@ -159,7 +154,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "var_block",
+    "colour": "#7f468c", 
     "tooltip": "ruleml:Var",
     "extensions": [
       "atom_block_validation",
@@ -177,7 +172,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "ind_block",
+    "colour": "#7f468c",
     "tooltip": "ruleml:Ind",
     "extensions": [
       "atom_block_validation",
@@ -195,7 +190,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "data_block",
+    "colour": "#A6D6B6", 
     "tooltip": "ruleml:Data",
   },
   {
@@ -209,7 +204,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "deontic_block",
+    "colour": "#EB9B34", 
     "tooltip": "lrml:Obligation",
   },
   {
@@ -223,7 +218,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "deontic_block",
+    "colour": "#EB9B34", 
     "tooltip": "lrml:Permission",
   },
   {
@@ -237,7 +232,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "deontic_block",
+    "colour": "#EB9B34", 
     "tooltip": "lrml:Prohibition",
   },
   {
@@ -251,7 +246,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "deontic_block",
+    "colour": "#EB9B34", 
     "tooltip": "lrml:Right",
   },
   {
@@ -265,7 +260,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "deontic_block",
+    "colour": "#EB9B34", 
     "tooltip": "lrml:Violation",
   },
   {
@@ -279,7 +274,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "deontic_block",
+    "colour": "#EB9B34", 
     "tooltip": "lrml:Compliance",
   },
   {
@@ -293,7 +288,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "statement_block",
+    "colour": "#5ba59f", 
     "tooltip": "lrml:constitutive",
   },
   {
@@ -307,7 +302,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "statement_block",
+    "colour": "#5ba59f", 
     "tooltip": "lrml:prescriptive",
   },
   {
@@ -321,7 +316,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "statement_block",
+    "colour": "#5ba59f", 
     "tooltip": "lrml:override",
   },
   {
@@ -335,7 +330,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "statement_block",
+    "colour": "#5ba59f", 
     "tooltip": "lrml:penalty",
   },
   {
@@ -349,7 +344,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "statement_block",
+    "colour": "#5ba59f", 
     "tooltip": "lrml:reparation",
   },
   {
@@ -363,35 +358,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "statement_block",
+    "colour": "#5ba59f", 
     "tooltip": "lrml:factual",
   },
 ]);
-
-// Block validators
-Blockly.Extensions.register('atom_block_validation', function () {
-  let valid = false;
-  this.setOnChange(function (changeEvent) {
-    let surrond_parent_block = this.getSurroundParent();
-    if (surrond_parent_block && surrond_parent_block.type === "atom_block") {
-      this.setWarningText(null);
-      valid = true;
-    } else {
-      this.setWarningText('Must have a parent Atom block.');
-      valid = false;
-    }
-    // Disable invalid blocks (unless it's in a toolbox flyout,
-    // since you can't drag disabled blocks to your workspace).
-    if (!this.isInFlyout) {
-      const initialGroup = Blockly.Events.getGroup();
-      // Make it so the move and the disable event get undone together.
-      Blockly.Events.setGroup(changeEvent.group);
-      if (valid) {
-        this.setDisabledReason(null);
-      } else {
-        this.setDisabledReason('Invalid parent block.');
-      }
-      Blockly.Events.setGroup(initialGroup);
-    }
-  });
-});

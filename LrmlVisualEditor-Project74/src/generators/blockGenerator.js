@@ -1,12 +1,7 @@
-/**
- * @license
- * Copyright 2023 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-export const forBlock = Object.create(null);
+import { javascriptGenerator } from 'blockly/javascript';
 
 // If Then category
-forBlock['if_block'] = function (block, generator) {
+javascriptGenerator.forBlock['if_block'] = function(block, generator) {
   const ifStatementMembers =
     generator.statementToCode(block, 'MEMBERS_IF');
   const thenStatementMembers =
@@ -16,19 +11,19 @@ forBlock['if_block'] = function (block, generator) {
 };
 
 // Operator category
-forBlock['and_block'] = function (block, generator) {
+javascriptGenerator.forBlock['and_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_AND');
   const code = 'and {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['or_block'] = function (block, generator) {
+javascriptGenerator.forBlock['or_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_OR');
   const code = 'or {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['not_block'] = function (block, generator) {
+javascriptGenerator.forBlock['not_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_NOT');
   const code = 'not {\n' + statementMembers + '\n}';
@@ -36,7 +31,7 @@ forBlock['not_block'] = function (block, generator) {
 };
 
 // Expression Category
-forBlock['expr_block'] = function (block, generator) {
+javascriptGenerator.forBlock['expr_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_EXPR');
   const code = 'expr {\n' + statementMembers + '\n}';
@@ -44,72 +39,72 @@ forBlock['expr_block'] = function (block, generator) {
 };
 
 // Atom category
-forBlock['atom_block'] = function (block, generator) {
+javascriptGenerator.forBlock['atom_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_ATOM');
   const code = 'atom {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['fun_block'] = function (block) {
+javascriptGenerator.forBlock['fun_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_FUN');
   const code = `fun(${value})`;
   return code;
 };
-forBlock['rel_block'] = function (block) {
+javascriptGenerator.forBlock['rel_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_REL');
   const code = `rel(${value})`;
   return code;
 };
-forBlock['var_block'] = function (block) {
+javascriptGenerator.forBlock['var_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_VAR');
   const code = `var(${value})`;
   return code;
 };
-forBlock['ind_block'] = function (block) {
+javascriptGenerator.forBlock['ind_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_IND');
   const code = `ind(${value})`;
   return code;
 };
 
 // Data category
-forBlock['data_block'] = function (block) {
+javascriptGenerator.forBlock['data_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_DATA');
   const code = `data(${value})`;
   return code;
 };
 
 // Deontic category
-forBlock['obligation_block'] = function (block, generator) {
+javascriptGenerator.forBlock['obligation_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_OBLIGATION');
   const code = 'obligation {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['permission_block'] = function (block, generator) {
+javascriptGenerator.forBlock['permission_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_PERMISSION');
   const code = 'permission {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['prohibition_block'] = function (block, generator) {
+javascriptGenerator.forBlock['prohibition_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_PROHIBITION');
   const code = 'prohibition {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['right_block'] = function (block, generator) {
+javascriptGenerator.forBlock['right_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_RIGHT');
   const code = 'right {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['violation_block'] = function (block, generator) {
+javascriptGenerator.forBlock['violation_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_VIOLATION');
   const code = 'violation {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['compliance_block'] = function (block, generator) {
+javascriptGenerator.forBlock['compliance_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_COMPLIANCE');
   const code = 'compliance {\n' + statementMembers + '\n}';
@@ -117,37 +112,37 @@ forBlock['compliance_block'] = function (block, generator) {
 }
 
 // Statement category
-forBlock['constitutive_block'] = function (block, generator) {
+javascriptGenerator.forBlock['constitutive_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_CONSTITUTIVE');
   const code = 'consitutive {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['prescriptive_block'] = function (block, generator) {
+javascriptGenerator.forBlock['prescriptive_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_PRESCRIPTIVE');
   const code = 'prescriptive {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['override_block'] = function (block, generator) {
+javascriptGenerator.forBlock['override_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_OVERRIDE');
   const code = 'override {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['penalty_block'] = function (block, generator) {
+javascriptGenerator.forBlock['penalty_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_PENALTY');
   const code = 'penalty {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['reparation_block'] = function (block, generator) {
+javascriptGenerator.forBlock['reparation_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_REPARATION');
   const code = 'reparation {\n' + statementMembers + '\n}';
   return code;
 };
-forBlock['factual_block'] = function (block, generator) {
+javascriptGenerator.forBlock['factual_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_FACTUAL');
   const code = 'factual {\n' + statementMembers + '\n}';
