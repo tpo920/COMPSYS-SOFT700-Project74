@@ -2,14 +2,17 @@ import { useState, useEffect, useRef } from 'react';
 import * as Blockly from "blockly/core";
 import { useBlocklyWorkspace } from 'react-blockly';
 import { javascriptGenerator } from 'blockly/javascript';
-import { toolbox } from './toolbox/blockToolbox';
+import { toolbox } from './blockly/blockToolbox'
+import "./blockly/blockGenerator";
+import "./blockly/extensions/validators";
+import "./blockly/blocks";
+import './App.css';
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
-import Box from '@mui/material/Box';
-import "./generators/blockGenerator";
-import "./extensions/validators";
-import "./blocks/blocks";
-import './App.css';
+import Autocomplete from './lrml/Autocomplete';
+import {
+  Box,
+} from "@mui/material";
 
 function App() {
   const [ws, setWs] = useState(null);
@@ -95,7 +98,10 @@ function App() {
       <NavBar />
       <div id="pageContainer">
         <div className="blockly-workspace" ref={blocklyRef} />
-        <TextBox value={blockCode} />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <TextBox value={blockCode} />
+          <Autocomplete />
+        </Box>
       </div>
     </>
 
