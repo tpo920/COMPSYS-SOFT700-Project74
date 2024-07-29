@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import * as Blockly from "blockly/core";
 import { useBlocklyWorkspace } from 'react-blockly';
 import { javascriptGenerator } from 'blockly/javascript';
-import { toolbox } from './blockly/blockToolbox'
+import { toolbox } from './blockly/blockToolbox';
 import "./blockly/blockGenerator";
 import "./blockly/extensions/validators";
 import "./blockly/blocks";
@@ -10,9 +10,8 @@ import './App.css';
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
 import Autocomplete from './lrml/Autocomplete';
-import {
-  Box,
-} from "@mui/material";
+import {Box} from "@mui/material";
+import {ZoomToFitControl} from '@blockly/zoom-to-fit';
 
 function App() {
   const [ws, setWs] = useState(null);
@@ -22,6 +21,7 @@ function App() {
   useBlocklyWorkspace({
     ref: blocklyRef,
     toolboxConfiguration: toolbox,
+    toolbox: toolbox,
     workspaceConfiguration: {
       zoom: { controls: true, wheel: true, startScale: 1, maxScale: 3, minScale: 0.3, scaleSpeed: 1.2 },
       grid:
@@ -29,9 +29,9 @@ function App() {
         spacing: 20,
         length: 3,
         colour: '#ccc',
-        snap: true
+        snap: true,
       },
-      trashcan: true
+      trashcan: true,
     },
     onWorkspaceChange: workspaceDidChange,
   });
@@ -53,13 +53,16 @@ function App() {
   useEffect(() => {
     if (ws) {
       ws.addChangeListener((e) => {
-        if (e.type == Blockly.Events.BLOCK_CREATE) {
+        if (e.type === Blockly.Events.BLOCK_CREATE) {
           const block = ws.getBlockById(e.blockId);
           if (block.type === 'atom_block') {
             addSubBlocks(block);
           }
         }
       });
+      // Initialise the zoom-to-fit plugin
+      const zoomToFit = new ZoomToFitControl(ws);
+      zoomToFit.init();
     }
   }, [ws]);
 
@@ -108,4 +111,4 @@ function App() {
   )
 };
 
-export default App
+export default App;

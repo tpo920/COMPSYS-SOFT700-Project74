@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@blockly/toolbox-search": "^2.0.4",
+    "@blockly/zoom-to-fit": "^6.0.5",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.16.4",
