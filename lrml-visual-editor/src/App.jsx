@@ -10,8 +10,9 @@ import './App.css';
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
 import Autocomplete from './lrml/Autocomplete';
-import {Box} from "@mui/material";
-import {ZoomToFitControl} from '@blockly/zoom-to-fit';
+import { Box } from "@mui/material";
+import { ZoomToFitControl } from "@blockly/zoom-to-fit";
+import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 
 function App() {
   const [ws, setWs] = useState(null);
@@ -23,9 +24,14 @@ function App() {
     toolboxConfiguration: toolbox,
     toolbox: toolbox,
     workspaceConfiguration: {
-      zoom: { controls: true, wheel: true, startScale: 1, maxScale: 3, minScale: 0.3, scaleSpeed: 1.2 },
-      grid:
-      {
+      zoom: { 
+        controls: true, 
+        wheel: true, 
+        startScale: 1, 
+        maxScale: 3, 
+        minScale: 0.3, 
+        scaleSpeed: 1.2 },
+      grid: {
         spacing: 20,
         length: 3,
         colour: '#ccc',
@@ -63,6 +69,10 @@ function App() {
       // Initialise the zoom-to-fit plugin
       const zoomToFit = new ZoomToFitControl(ws);
       zoomToFit.init();
+
+      // Initialize the workspace search plugin
+      const workspaceSearch = new WorkspaceSearch(ws);
+      workspaceSearch.init();
     }
   }, [ws]);
 
@@ -108,7 +118,7 @@ function App() {
       </div>
     </>
 
-  )
+  );
 };
 
 export default App;

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@blockly/plugin-workspace-search": "^9.0.5",
     "@blockly/toolbox-search": "^2.0.4",
     "@blockly/zoom-to-fit": "^6.0.5",
     "@emotion/react": "^11.11.4",
