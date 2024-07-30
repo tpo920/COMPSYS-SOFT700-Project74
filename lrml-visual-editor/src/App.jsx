@@ -9,7 +9,8 @@ import "./blockly/blocks";
 import './App.css';
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
-import Autocomplete from './lrml/Autocomplete';
+import Autocomplete from './lrml/AutocompleteLrml';
+import ClauseInput from './components/ClauseInput';
 import {
   Box,
 } from "@mui/material";
@@ -17,6 +18,7 @@ import {
 function App() {
   const [ws, setWs] = useState(null);
   const [blockCode, setBlockCode] = useState("");
+  const [clause, setClause] = useState("");
   const blocklyRef = useRef(null);
 
   useBlocklyWorkspace({
@@ -100,7 +102,8 @@ function App() {
         <div className="blockly-workspace" ref={blocklyRef} />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <TextBox value={blockCode} />
-          <Autocomplete />
+          <ClauseInput clause={clause} setClause={setClause} />
+          <Autocomplete currentClause={clause} />
         </Box>
       </div>
     </>

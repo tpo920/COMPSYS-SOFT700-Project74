@@ -4,8 +4,7 @@ import {
     Button,
 } from "@mui/material";
 
-function Autocomplete() {
-    const TEXT = 'The floor waste shall have a minimum diameter of 40 mm.';
+function Autocomplete({ currentClause }) {
     const LRML = "if {";
     const BASE_URL = "http://127.0.0.1:5000";
     const HEADERS = {
@@ -18,17 +17,22 @@ function Autocomplete() {
 
     async function fetchModel() {
         const BODY = new URLSearchParams({
-            text: TEXT,
+            text: currentClause,
             lrml: LRML,
         });
 
-        fetch(BASE_URL + '/api/predict', {
+        await fetch(BASE_URL + '/api/predict', {
             method: "POST",
             body: BODY,
-            headers: HEADERS,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
         }).then((res) => {
-            console.log(res.json());
-        });
+            res.json().then((data) => {
+                console.log(data);
+                return data;
+            }).catch((err) => {
+                console.log(err);
+            })
+        })
     }
 
     return (
