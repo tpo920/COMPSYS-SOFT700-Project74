@@ -17,6 +17,7 @@ import DarkTheme from '@blockly/theme-dark';
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { FixedEdgesMetricsManager } from '@blockly/fixed-edges';
+import {ContentHighlight} from '@blockly/workspace-content-highlight';
 
 function App() {
   const [ws, setWs] = useState(null);
@@ -84,9 +85,13 @@ function App() {
       const zoomToFit = new ZoomToFitControl(ws);
       zoomToFit.init();
 
-      // Initialize the workspace search plugin
+      // Initialise the workspace search plugin
       const workspaceSearch = new WorkspaceSearch(ws);
       workspaceSearch.init();
+
+      // Initialise the content highlight plugin
+      const contentHighlight = new ContentHighlight(ws);
+      contentHighlight.init();
     }
   }, [ws]);
 
