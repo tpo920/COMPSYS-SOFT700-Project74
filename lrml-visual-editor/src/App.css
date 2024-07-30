@@ -1,3 +1,27 @@
+/* App.css */
+
+/* Default light theme variables */
+:root {
+  --background-color: #fff;
+  --text-color: #000;
+  --blockly-background-color: #f9f9f9;
+}
+
+/* Dark theme variables */
+.dark-theme {
+  --background-color: #333333;
+  --text-color: #fff;
+  --blockly-background-color: #2d2d2d;
+}
+
+/* Applying variables to body and other elements */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 #pageContainer {
   display: flex;
   width: 100%;
@@ -6,6 +30,15 @@
 }
 
 .blockly-workspace {
+  background-color: var(--blockly-background-color);
   height: calc(100vh - 114px);
   width: 80%;
+}
+
+.text-box {
+  background-color: var(--blockly-background-color);
+  color: var(--text-color);
+  padding: 1rem;
+  border: none;
+  flex: 1;
 }

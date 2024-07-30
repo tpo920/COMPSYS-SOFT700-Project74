@@ -10,14 +10,18 @@ import './App.css';
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
 import Autocomplete from './lrml/Autocomplete';
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { ZoomToFitControl } from "@blockly/zoom-to-fit";
 import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
+import DarkTheme from '@blockly/theme-dark';
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 function App() {
   const [ws, setWs] = useState(null);
   const [blockCode, setBlockCode] = useState("");
   const blocklyRef = useRef(null);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   useBlocklyWorkspace({
     ref: blocklyRef,
@@ -30,7 +34,8 @@ function App() {
         startScale: 1, 
         maxScale: 3, 
         minScale: 0.3, 
-        scaleSpeed: 1.2 },
+        scaleSpeed: 1.2 
+      },
       grid: {
         spacing: 20,
         length: 3,
@@ -38,6 +43,7 @@ function App() {
         snap: true,
       },
       trashcan: true,
+      theme: isDarkTheme ? DarkTheme : undefined,
     },
     onWorkspaceChange: workspaceDidChange,
   });
@@ -76,6 +82,13 @@ function App() {
     }
   }, [ws]);
 
+  useEffect(() => {
+    if (ws) {
+      ws.setTheme(isDarkTheme ? DarkTheme : Blockly.Themes.Classic);
+    }
+    document.body.className = isDarkTheme ? 'dark-theme' : '';
+  }, [isDarkTheme, ws]);
+
   function addSubBlocks(atomBlock) {
     // Create new blocks
     const relBlock = ws.newBlock('rel_block');
@@ -109,6 +122,12 @@ function App() {
   return (
     <>
       <NavBar />
+      <IconButton 
+        onClick={() => setIsDarkTheme(!isDarkTheme)} 
+        style={{ position: 'absolute', right: 10, top: 10 }}
+      >
+        {isDarkTheme ? <LightModeIcon /> : <DarkModeIcon />}
+      </IconButton>
       <div id="pageContainer">
         <div className="blockly-workspace" ref={blocklyRef} />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -117,7 +136,6 @@ function App() {
         </Box>
       </div>
     </>
-
   );
 };
 
