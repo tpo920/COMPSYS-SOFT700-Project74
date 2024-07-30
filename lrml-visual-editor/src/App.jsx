@@ -16,17 +16,25 @@ import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 import DarkTheme from '@blockly/theme-dark';
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { FixedEdgesMetricsManager } from '@blockly/fixed-edges';
 
 function App() {
   const [ws, setWs] = useState(null);
   const [blockCode, setBlockCode] = useState("");
   const blocklyRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  FixedEdgesMetricsManager.setFixedEdges({
+    top: true,
+    left: true,
+  });
 
   useBlocklyWorkspace({
     ref: blocklyRef,
     toolboxConfiguration: toolbox,
     toolbox: toolbox,
+    plugins: {
+      metricsManager: FixedEdgesMetricsManager,
+    },
     workspaceConfiguration: {
       zoom: { 
         controls: true, 
