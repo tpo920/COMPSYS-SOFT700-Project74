@@ -21,7 +21,7 @@ function Autocomplete({ currentClause }) {
             lrml: LRML,
         });
 
-        await fetch(BASE_URL + '/api/predict', {
+        await fetch(BASE_URL + '/predict', {
             method: "POST",
             body: BODY,
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
