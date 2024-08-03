@@ -10,14 +10,12 @@ import './App.css';
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
 import Autocomplete from './lrml/Autocomplete';
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import { ZoomToFitControl } from "@blockly/zoom-to-fit";
 import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 import DarkTheme from '@blockly/theme-dark';
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { FixedEdgesMetricsManager } from '@blockly/fixed-edges';
-import {ContentHighlight} from '@blockly/workspace-content-highlight';
+import { ContentHighlight } from '@blockly/workspace-content-highlight';
 
 function App() {
   const [ws, setWs] = useState(null);
@@ -37,13 +35,13 @@ function App() {
       metricsManager: FixedEdgesMetricsManager,
     },
     workspaceConfiguration: {
-      zoom: { 
-        controls: true, 
-        wheel: true, 
-        startScale: 1, 
-        maxScale: 3, 
-        minScale: 0.3, 
-        scaleSpeed: 1.2 
+      zoom: {
+        controls: true,
+        wheel: true,
+        startScale: 1,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2
       },
       grid: {
         spacing: 20,
@@ -134,13 +132,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <IconButton 
-        onClick={() => setIsDarkTheme(!isDarkTheme)} 
-        style={{ position: 'absolute', right: 10, top: 10 }}
-      >
-        {isDarkTheme ? <LightModeIcon /> : <DarkModeIcon />}
-      </IconButton>
+      <NavBar isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
       <div id="pageContainer">
         <div className="blockly-workspace" ref={blocklyRef} />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
