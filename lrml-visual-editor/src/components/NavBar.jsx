@@ -1,17 +1,22 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import { Box, IconButton, AppBar, Toolbar } from "@mui/material";
+import logo from '../assets/CAPSTONE700P74.png';
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-export default function NavBar() {
+export default function NavBar({ isDarkTheme, setIsDarkTheme }) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ background: "#8A9BF8", boxShadow: "none" }}>
                 <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        P74
-                    </Typography>
+                    <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+                        <img src={logo} alt="logo" width={300} height={30} />
+                    </Box>
+                    <IconButton
+                        onClick={() => setIsDarkTheme(!isDarkTheme)}
+                    >
+                        {isDarkTheme ? <LightModeIcon /> : <DarkModeIcon />}
+                    </IconButton>
                 </Toolbar>
             </AppBar>
         </Box>
