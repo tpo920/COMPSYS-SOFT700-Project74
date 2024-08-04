@@ -38,7 +38,7 @@ function Autocomplete({ currentClause }) {
     return (
         <Box>
             <Button variant="contained" onClick={() => fetchModel()}>
-                AUTOCOMPLETE
+                TEMP AUTOCOMPLETE BUTTON
             </Button>
         </Box>
     )

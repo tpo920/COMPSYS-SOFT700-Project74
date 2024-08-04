@@ -26,6 +26,9 @@ function ClauseInput({ clause, setClause }) {
                 variant="filled"
                 onChange={handleChange}
                 value={clause}
+                InputLabelProps={{
+                    shrink: true,
+                }}
             />
         </Box>
     )
