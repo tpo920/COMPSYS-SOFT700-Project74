@@ -21,3 +21,40 @@ body {
   flex-grow: 1;
   overflow: hidden;
 }
+
+/* Override CodeMirror keyword color */
+.CodeMirror .cm-keyword {
+  color: #000000 !important; /* Ensure it's white */
+}
+
+/* Override CodeMirror keyword color */
+.dark-theme .CodeMirror .cm-keyword {
+  color: #ffffff !important; /* Ensure it's white */
+}
+
+
+/* Additional styles for dark mode in CodeMirror */
+
+.dark-theme .CodeMirror {
+  background-color: #333333; /* Dark background */
+  color: #fff; /* Light text */
+}
+
+.dark-theme .CodeMirror-gutters {
+  background-color: #1e1e1e; /* Darker background for gutters */
+  color: #888; /* Lighter text color for gutter numbers */
+}
+
+/* Optional: Style the CodeMirror lines and selection */
+.dark-theme .CodeMirror-lines {
+  background-color: #333333; /* Consistent background */
+}
+
+.dark-theme .CodeMirror-selected {
+  background: #444; /* Selection color */
+}
+
+/* Ensure that the CodeMirror cursor is visible */
+.dark-theme .CodeMirror-cursor {
+  border-left: 1px solid #fff; /* White cursor for visibility */
+}
