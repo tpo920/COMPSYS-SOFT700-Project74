@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 function ClauseInput({ clause, setClause }) {
     const handleChange = (event) => {
         setClause(event.target.value)
-        console.log(event.target.value);
     };
 
     return (
