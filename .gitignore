@@ -22,3 +22,19 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+env/
+.venv
+venv/
+env.bak/
+venv.bak/
+
+# python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
