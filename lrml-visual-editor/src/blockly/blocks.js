@@ -115,6 +115,10 @@ Blockly.defineBlocksWithJsonArray([
           [
             "by",
             "by"
+          ],
+          [
+            "exist",
+            "exist"
           ]
         ]
       }
