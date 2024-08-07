@@ -1,10 +1,12 @@
 // React _________________________________________
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 // Components _________________________________________
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
 import Autocomplete from './lrml/AutocompleteLrml';
 import ClauseInput from './components/ClauseInput';
+// Context _________________________________________
+import { ColourModeContext } from './context/ColourModeContext';
 // Blockly _________________________________________
 import * as Blockly from "blockly/core";
 import { useBlocklyWorkspace } from 'react-blockly';
@@ -28,7 +30,7 @@ function App() {
   const [blockCode, setBlockCode] = useState("");
   const [clause, setClause] = useState("");
   const blocklyRef = useRef(null);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const { mode } = useContext(ColourModeContext);
   FixedEdgesMetricsManager.setFixedEdges({
     top: true,
     left: true,
@@ -57,7 +59,7 @@ function App() {
         snap: true,
       },
       trashcan: true,
-      theme: isDarkTheme ? DarkTheme : undefined,
+      theme: mode === 'dark' ? DarkTheme : undefined,
     },
     onWorkspaceChange: workspaceDidChange,
   });
@@ -95,14 +97,14 @@ function App() {
   // Set theme
   useEffect(() => {
     if (ws) {
-      ws.setTheme(isDarkTheme ? DarkTheme : Blockly.Themes.Classic);
+      ws.setTheme(mode === 'dark' ? DarkTheme : Blockly.Themes.Classic);
     }
-    document.body.className = isDarkTheme ? 'dark-theme' : '';
-  }, [isDarkTheme, ws]);
+    document.body.className = mode === 'dark' ? 'dark-theme' : '';
+  }, [mode, ws]);
 
   return (
     <>
-      <NavBar isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
+      <NavBar />
       <div id="pageContainer">
         <div className="blockly-workspace" ref={blocklyRef} />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
