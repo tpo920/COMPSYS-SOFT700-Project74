@@ -21,6 +21,8 @@ import "./blockly/blockGenerator";
 import "./blockly/extensions/validators";
 import "./blockly/blocks";
 import { Flydown } from './blockly/flydown/flydown';
+import { registerCss } from './blockly/flydown/css';
+registerCss();
 // MUI _________________________________________
 import { Box } from "@mui/material";
 // CSS _________________________________________
@@ -133,29 +135,36 @@ function App() {
     );
     // ***** [lyn, 10/05/2013] NEED TO WORRY ABOUT MULTIPLE BLOCKLIES! *****
     workspace.flydown_ = flydown;
-    Blockly.utils.dom.insertAfter(flydown.createDom('g'),
+    Blockly.utils.dom.insertAfter(flydown.createDom('blocklyFlydown'),
       workspace.svgBubbleCanvas_);
     flydown.init(workspace);
     flydown.autoClose = true; // Flydown closes after selecting a block
   }
 
   function openFlydown(currentBlock) {
-    const flydown = Blockly.common.getMainWorkspace().flydown_;
+    const workspace = Blockly.common.getMainWorkspace();
+    workspace.hideChaff();
+    const flydown = workspace.flydown_;
 
+    workspace.getParentSvg().appendChild(flydown.svgGroup_);
     const scale = flydown.targetWorkspace.scale;
     flydown.workspace_.setScale(scale);
 
+    // Set flydown css
+    flydown.setCSSClass('blocklyFlydown');
+
+    // Test blocks to show
     const blocksXML2 = ['<xml>' + '<block type="atom_block"></block>' + '<block type="fun_block"></block>' + '</xml>'];
     const blocksDom = Blockly.utils.xml.textToDom(blocksXML2);
     const blocksXMLList = blocksDom.children;
 
-    // Calc position
-    const pos = currentBlock.getRelativeToSurfaceXY();
-    pos.x += pos.x * scale;
-    pos.y += pos.y * scale;
-    console.log(pos);
+    const svgBlock = currentBlock.getSvgRoot();
+    const xy = workspace.getSvgXY(svgBlock);
+    const borderBBox = currentBlock.getSvgRoot().getBBox();
+    xy.x += borderBBox.width * scale;
 
-    flydown.showAt(blocksXMLList, pos.x, pos.y);
+    // Calc position
+    flydown.showAt(blocksXMLList, xy.x, xy.y);
   }
 
   // Set theme
