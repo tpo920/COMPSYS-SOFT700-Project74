@@ -16,13 +16,11 @@ import { ZoomToFitControl } from "@blockly/zoom-to-fit";
 import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 import { FixedEdgesMetricsManager } from '@blockly/fixed-edges';
 import { ContentHighlight } from '@blockly/workspace-content-highlight';
+import { initBlocklyWithFlydown, showBlocklyFlydown } from './blockly/flydown/blockFlydown';
 import DarkTheme from '@blockly/theme-dark';
 import "./blockly/blockGenerator";
 import "./blockly/extensions/validators";
 import "./blockly/blocks";
-import { Flydown } from './blockly/flydown/flydown';
-import { registerCss } from './blockly/flydown/css';
-registerCss();
 // MUI _________________________________________
 import { Box } from "@mui/material";
 // CSS _________________________________________
@@ -31,7 +29,6 @@ import './App.css';
 function App() {
   const [ws, setWs] = useState(null);
   const [blockCode, setBlockCode] = useState("");
-  const [thisFlydown, setThisFlydown] = useState("");
   const [clause, setClause] = useState("");
   const blocklyRef = useRef(null);
   const { mode } = useContext(ColourModeContext);
@@ -69,7 +66,10 @@ function App() {
   });
 
   function workspaceDidChange(workspace) {
-    setWs(workspace);
+    if (ws === null) {
+      setWs(workspace);
+    }
+    // Block -> code 
     const code = javascriptGenerator.workspaceToCode(workspace);
     javascriptGenerator.scrub_ = function (block, code, thisOnly) {
       const nextBlock =
@@ -82,6 +82,7 @@ function App() {
     setBlockCode(code);
   }
 
+  // Workspace render
   useEffect(() => {
     if (ws) {
       // Initialise the zoom-to-fit plugin
@@ -101,6 +102,7 @@ function App() {
     }
   }, [ws]);
 
+
   function onBlockClickListener(event) {
     if (event.type == Blockly.Events.CLICK) {
       if (event.targetType == "block") {
@@ -111,61 +113,13 @@ function App() {
         const now = Date.now();
 
         if (now - (block["_lastClickTime"] ?? 0) < 300) {
-          // Do something
-          console.log("Double click");
-          openFlydown(block);
-
+          // open flydown to show suggested blocks
+          showBlocklyFlydown(block);
         }
-
         block["_lastClickTime"] = now;
       }
     }
   };
-
-  // Initialize Blockly and create a vertical flydown
-  function initBlocklyWithFlydown(workspace) {
-    const flydown = new Flydown(
-      new Blockly.Options({
-        scrollbars: false,
-        rtl: workspace.RTL,
-        renderer: workspace.options.renderer,
-        rendererOverrides: workspace.options.rendererOverrides,
-        parentWorkspace: workspace,
-      })
-    );
-    // ***** [lyn, 10/05/2013] NEED TO WORRY ABOUT MULTIPLE BLOCKLIES! *****
-    workspace.flydown_ = flydown;
-    Blockly.utils.dom.insertAfter(flydown.createDom('blocklyFlydown'),
-      workspace.svgBubbleCanvas_);
-    flydown.init(workspace);
-    flydown.autoClose = true; // Flydown closes after selecting a block
-  }
-
-  function openFlydown(currentBlock) {
-    const workspace = Blockly.common.getMainWorkspace();
-    workspace.hideChaff();
-    const flydown = workspace.flydown_;
-
-    workspace.getParentSvg().appendChild(flydown.svgGroup_);
-    const scale = flydown.targetWorkspace.scale;
-    flydown.workspace_.setScale(scale);
-
-    // Set flydown css
-    flydown.setCSSClass('blocklyFlydown');
-
-    // Test blocks to show
-    const blocksXML2 = ['<xml>' + '<block type="atom_block"></block>' + '<block type="fun_block"></block>' + '</xml>'];
-    const blocksDom = Blockly.utils.xml.textToDom(blocksXML2);
-    const blocksXMLList = blocksDom.children;
-
-    const svgBlock = currentBlock.getSvgRoot();
-    const xy = workspace.getSvgXY(svgBlock);
-    const borderBBox = currentBlock.getSvgRoot().getBBox();
-    xy.x += borderBBox.width * scale;
-
-    // Calc position
-    flydown.showAt(blocksXMLList, xy.x, xy.y);
-  }
 
   // Set theme
   useEffect(() => {

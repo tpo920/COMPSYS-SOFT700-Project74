@@ -12,5 +12,5 @@ const EXTRA_CSS = `
  * Register our extra CSS with Blockly.
  */
 export function registerCss() {
-    Blockly.Css.register(EXTRA_CSS);
-  }
+  Blockly.Css.register(EXTRA_CSS);
+}
