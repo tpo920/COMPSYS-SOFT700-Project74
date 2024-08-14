@@ -33,6 +33,10 @@ export const toolbox = {
           kind: 'block',
           type: 'not_block',
         },
+        {
+          kind: 'block',
+          type: 'operator_block',
+        },
       ],
     },
     {
@@ -69,21 +73,29 @@ export const toolbox = {
           kind: 'block',
           type: 'var_block',
         },
-        {
-          kind: 'block',
-          type: 'ind_block',
-        },
       ],
     },
     {
       kind: 'category',
       name: 'Data',
-      colour: '#A6D6B6',
+      colour: '#66BB6A',
       contents: [
         // Add blocks relevant to "Data" category here
         {
           kind: 'block',
           type: 'data_block'
+        },
+        {
+          kind: 'block',
+          type: 'baseunit_block'
+        },
+        {
+          kind: 'block',
+          type: 'prefix_block'
+        },
+        {
+          kind: 'block',
+          type: 'kind_block'
         }
       ],
     },
@@ -105,18 +117,6 @@ export const toolbox = {
           kind: 'block',
           type: 'prohibition_block',
         },
-        {
-          kind: 'block',
-          type: 'right_block',
-        },
-        {
-          kind: 'block',
-          type: 'violation_block',
-        },
-        {
-          kind: 'block',
-          type: 'compliance_block',
-        },
       ],
     },
     {
@@ -127,27 +127,11 @@ export const toolbox = {
         // Add blocks relevant to "Deontic" category here
         {
           kind: 'block',
-          type: 'constitutive_block',
+          type: 'appliedstatement_block',
         },
         {
           kind: 'block',
-          type: 'prescriptive_block',
-        },
-        {
-          kind: 'block',
-          type: 'override_block',
-        },
-        {
-          kind: 'block',
-          type: 'penalty_block',
-        },
-        {
-          kind: 'block',
-          type: 'reparation_block',
-        },
-        {
-          kind: 'block',
-          type: 'factual_block',
+          type: 'rulestatement_block',
         },
       ],
     },
