@@ -4,7 +4,7 @@ import * as Blockly from 'blockly/core';
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "if_block",
-    "message0": "If %1 %2 Then %3 %4",
+    "message0": "If %1 %2",
     "args0": [
       {
         "type": "input_end_row",
@@ -13,6 +13,16 @@ Blockly.defineBlocksWithJsonArray([
         "type": "input_statement",
         "name": "MEMBERS_IF"
       },
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#8AB2FF",  
+    "tooltip": "ruleml:if",
+  },
+  {
+    "type": "then_block",
+    "message0": "Then %1 %2",
+    "args0": [
       {
         "type": "input_end_row",
       },
@@ -24,7 +34,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": "#8AB2FF",  
-    "tooltip": "ruleml:if",
+    "tooltip": "ruleml:then",
   },
   {
     "type": "and_block",
