@@ -198,16 +198,12 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "var_block",
-    "message0": "Var %1 %2",
+    "message0": "Var %1",
     "args0": [
       {
         "type": "field_input",
         "name": "MEMBER_VAR",
         "text": ""
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBER_VAR2"
       }
     ],
     "previousStatement": null,
@@ -326,19 +322,6 @@ Blockly.defineBlocksWithJsonArray([
     "nextStatement": null,
     "colour": "#1B5E20", 
     "tooltip": "ruleml:Kind",
-  },
-  {
-    "type": "value_block",
-    "message0": "Value %1",
-    "args0": [
-      {
-        "type": "output_statement",
-        "name": "MEMBERS_VALUE"
-      }
-    ],
-    "previousStatement": null,
-    "colour": "#1B5E20", 
-    "tooltip": "lrml:Value",
   },
   {
     "type": "obligation_block",
