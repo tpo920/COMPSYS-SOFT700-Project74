@@ -64,19 +64,9 @@ javascriptGenerator.forBlock['rel_block'] = function (block) {
   const code = `rel(${value})`;
   return code;
 };
-javascriptGenerator.forBlock['var_block'] = function (block, generator) {
+javascriptGenerator.forBlock['var_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_VAR');
-  const statementMembers = generator.statementToCode(block, 'MEMBER_VAR2');
-  let code;
-  if (value && !statementMembers) {
-    code = `var(${value})`;
-  } else if (!value && statementMembers) {
-    code = `var {\n${statementMembers}\n}`;
-  } else if (value && statementMembers) {
-    code = `invalid var`;
-  } else {
-    code = `var()`
-  }
+  const code = `var(${value})`;
   return code;
 };
 
@@ -111,11 +101,6 @@ javascriptGenerator.forBlock['baseunit_block'] = function (block, generator) {
   const statementMembers =
     generator.statementToCode(block, 'MEMBERS_BASEUNIT');
   const code = 'baseunit (\n' + statementMembers + '\n)';
-  return code;
-};
-javascriptGenerator.forBlock['value_block'] = function (block) {
-  const value = block.getFieldValue('MEMBER_VALUE');
-  const code = `value`;
   return code;
 };
 
