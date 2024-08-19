@@ -1,41 +1,37 @@
-import { useState } from 'react';
-import {
-    Box,
-    Button,
-} from "@mui/material";
+import * as Blockly from "blockly/core";
 
-function Autocomplete({ currentClause }) {
-    const LRML = "if {";
-    const BASE_URL = "http://127.0.0.1:5000";
-    const [response, setResponse] = useState("");
+export function getParentBlocks(currentBlock) {
+    const blockList = [];
+    let block = currentBlock;
 
-    async function fetchModel() {
-        const BODY = new URLSearchParams({
-            text: currentClause,
-            lrml: LRML,
-        });
-
-        await fetch(BASE_URL + '/predict', {
-            method: "POST",
-            body: BODY,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        }).then((res) => {
-            res.json().then((data) => {
-                console.log(data);
-                return data;
-            }).catch((err) => {
-                console.log(err);
-            })
-        })
+    // Iterate to get parents
+    while (block) {
+        blockList.push(block.type);
+        block = block.getSurroundParent();
     }
+    parseBlockListToLrml(blockList);
+    return blockList;
+}
 
-    return (
-        <Box>
-            <Button variant="contained" onClick={() => fetchModel()}>
-                TEMP AUTOCOMPLETE BUTTON
-            </Button>
-        </Box>
-    )
-};
+/**
+ * E.g a block list = [expr_block, and_block, if_block]
+ * this function would return: if(and(expr( , this format will be passed into the model
+ */
+export function parseBlockListToLrml(blockList) {
+    let blockLrml = ''
+    for (const block of blockList) {
+        blockLrml += block.replace('_block', '(');
+    }
+    return blockLrml;
+}
 
-export default Autocomplete;
+/***
+ * Returns formatted string current block + attached parent blocks for selected current block
+*/
+export function getBlocklrml(currentBlock) {
+    const blockList = getParentBlocks(currentBlock).reverse();
+    return (parseBlockListToLrml(blockList));
+}
+
+
+

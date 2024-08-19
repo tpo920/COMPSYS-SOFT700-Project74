@@ -3,7 +3,6 @@ import { useState, useEffect, useRef, useContext } from 'react';
 // Components _________________________________________
 import NavBar from './components/NavBar';
 import TextBox from './components/TextBox';
-import Autocomplete from './lrml/AutocompleteLrml';
 import ClauseInput from './components/ClauseInput';
 // Context _________________________________________
 import { ColourModeContext } from './context/ColourModeContext';
@@ -17,6 +16,7 @@ import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 import { FixedEdgesMetricsManager } from '@blockly/fixed-edges';
 import { ContentHighlight } from '@blockly/workspace-content-highlight';
 import { initBlocklyWithFlydown, showBlocklyFlydown } from './blockly/flydown/blockFlydown';
+import { getBlocklrml } from './lrml/AutocompleteLrml';
 import DarkTheme from '@blockly/theme-dark';
 import "./blockly/blockGenerator";
 import "./blockly/extensions/validators";
@@ -26,10 +26,12 @@ import { Box } from "@mui/material";
 // CSS _________________________________________
 import './App.css';
 
+const BASE_URL = "http://127.0.0.1:5000";
+
 function App() {
   const [ws, setWs] = useState(null);
   const [blockCode, setBlockCode] = useState("");
-  const [clause, setClause] = useState("");
+  const [clause, setClause] = useState('');
   const blocklyRef = useRef(null);
   const { mode } = useContext(ColourModeContext);
   FixedEdgesMetricsManager.setFixedEdges({
@@ -97,13 +99,19 @@ function App() {
       const contentHighlight = new ContentHighlight(ws);
       contentHighlight.init();
 
-      ws.addChangeListener(onBlockClickListener);
       initBlocklyWithFlydown(ws);
     }
   }, [ws]);
 
+  // Update & set onBlockClickListener dependent on ws and clause state
+  useEffect(() => {
+    if (ws) {
+      ws.addChangeListener(onBlockClickListener);
+      return () => ws.removeChangeListener(onBlockClickListener);
+    }
+  }, [ws, clause]);
 
-  function onBlockClickListener(event) {
+  async function onBlockClickListener(event) {
     if (event.type == Blockly.Events.CLICK) {
       if (event.targetType == "block") {
         const block = ws.getBlockById(event.blockId);
@@ -113,6 +121,12 @@ function App() {
         const now = Date.now();
 
         if (now - (block["_lastClickTime"] ?? 0) < 300) {
+          // call api 
+          const currentBlockLrml = getBlocklrml(block);
+          const res = await fetchModel(currentBlockLrml, clause);
+          if (res) {
+            console.log(res);
+          }
           // open flydown to show suggested blocks
           showBlocklyFlydown(block);
         }
@@ -120,6 +134,28 @@ function App() {
       }
     }
   };
+
+  async function fetchModel(currentBlocks, currentClause) {
+    const BODY = new URLSearchParams({
+      text: currentClause,
+      lrml: currentBlocks,
+    });
+
+    console.log(currentBlocks);
+    console.log(currentClause);
+    await fetch(BASE_URL + '/predict', {
+      method: "POST",
+      body: BODY,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    }).then((res) => {
+      res.json().then((data) => {
+        console.log(data);
+        return data;
+      }).catch((err) => {
+        console.log(err);
+      })
+    })
+  }
 
   // Set theme
   useEffect(() => {
@@ -137,7 +173,6 @@ function App() {
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <TextBox value={blockCode} />
           <ClauseInput clause={clause} setClause={setClause} />
-          <Autocomplete currentClause={clause} />
         </Box>
       </div>
     </>

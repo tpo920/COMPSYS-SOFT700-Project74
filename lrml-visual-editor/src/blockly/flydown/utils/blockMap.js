@@ -11,7 +11,7 @@ export const blockMap = {
     // Expression
     expr_block: ['fun_block', 'atom_block', 'data_block'],
     // Atom
-    atom_block: ['rel_block', 'var_block', 'ind_block'],
+    atom_block: ['rel_block', 'var_block'],
     // To add fun, rel & var autocompletion
     fun_block: [],
     rel_block: [],
