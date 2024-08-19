@@ -4,7 +4,7 @@ import * as Blockly from 'blockly/core';
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "if_block",
-    "message0": "If %1 %2 Then %3 %4",
+    "message0": "If %1 %2",
     "args0": [
       {
         "type": "input_end_row",
@@ -13,6 +13,16 @@ Blockly.defineBlocksWithJsonArray([
         "type": "input_statement",
         "name": "MEMBERS_IF"
       },
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#8AB2FF",  
+    "tooltip": "ruleml:if",
+  },
+  {
+    "type": "then_block",
+    "message0": "Then %1 %2",
+    "args0": [
       {
         "type": "input_end_row",
       },
@@ -24,7 +34,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": "#8AB2FF",  
-    "tooltip": "ruleml:if",
+    "tooltip": "ruleml:then",
   },
   {
     "type": "and_block",
@@ -67,6 +77,38 @@ Blockly.defineBlocksWithJsonArray([
     "nextStatement": null,
     "colour": "#FF8A8A", 
     "tooltip": "ruleml:Not",
+  },
+  {
+    "type": "operator_block",
+    "message0": "Operator %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "MEMBER_OPERATOR",
+        "options":[
+          [
+            "addition",
+            "addition"
+          ],
+          [
+            "subtraction",
+            "subtraction"
+          ],
+          [
+            "multiplication",
+            "multiplication"
+          ],
+          [
+            "division",
+            "division"
+          ],
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#eb4b4b", 
+    "tooltip": "ruleml:Operator",
   },
   {
     "type": "expr_block",
@@ -115,6 +157,18 @@ Blockly.defineBlocksWithJsonArray([
           [
             "by",
             "by"
+          ],
+          [
+            "greaterThan",
+            "greaterThan"
+          ],
+          [
+            "lessThan",
+            "lessThan"
+          ],
+          [
+            "asPer",
+            "asPer"
           ]
         ]
       }
@@ -161,37 +215,113 @@ Blockly.defineBlocksWithJsonArray([
     ],
   },
   {
-    "type": "ind_block",
-    "message0": "Ind %1",
-    "args0": [
-      {
-        "type": "field_input",
-        "name": "MEMBER_IND",
-        "text": ""
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#7f468c",
-    "tooltip": "ruleml:Ind",
-    "extensions": [
-      "atom_block_validation",
-    ],
-  },
-  {
     "type": "data_block",
-    "message0": "Data %1",
+    "message0": "Data %1 %2",
     "args0": [
       {
         "type": "field_input",
         "name": "MEMBER_DATA",
         "text": ""
+      },
+      {
+        "type": "input_statement",
+        "name": "MEMBER_DATA2",
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": "#A6D6B6", 
+    "colour": "#66BB6A", 
     "tooltip": "ruleml:Data",
+  },
+  {
+    "type": "baseunit_block",
+    "message0": "BaseUnit %1",
+    "args0": [
+      {
+        "type": "input_statement",
+        "name": "MEMBERS_BASEUNIT"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#388E3C", 
+    "tooltip": "lrml:Baseunit",
+  },
+  {
+    "type": "prefix_block",
+    "message0": "Prefix %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "MEMBER_PREFIX",
+        "options":[
+          [
+            "kilo",
+            "kilo"
+          ],
+          [
+            "milli",
+            "milli"
+          ],
+          [
+            "mega",
+            "mega"
+          ]
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#1B5E20", 
+    "tooltip": "ruleml:Prefix",
+  },
+  {
+    "type": "kind_block",
+    "message0": "Kind %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "MEMBER_KIND",
+        "options":[
+          [
+            "metre",
+            "metre"
+          ],
+          [
+            "gram",
+            "gram"
+          ],
+          [
+            "litre",
+            "litre"
+          ],
+          [
+            "newton",
+            "newton"
+          ],
+          [
+            "pascal",
+            "pascal"
+          ],
+          [
+            "angleDegree",
+            "angleDegree"
+          ],
+          [
+            "celsius",
+            "celsius"
+          ],
+          [
+            "hectare",
+            "hectare"
+          ],
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#1B5E20", 
+    "tooltip": "ruleml:Kind",
   },
   {
     "type": "obligation_block",
@@ -236,129 +366,31 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "lrml:Prohibition",
   },
   {
-    "type": "right_block",
-    "message0": "Right %1",
+    "type": "appliedstatement_block",
+    "message0": "AppliedStatement %1",
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_RIGHT"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#EB9B34", 
-    "tooltip": "lrml:Right",
-  },
-  {
-    "type": "violation_block",
-    "message0": "Violation %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_VIOLATION"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#EB9B34", 
-    "tooltip": "lrml:Violation",
-  },
-  {
-    "type": "compliance_block",
-    "message0": "Compliance %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_COMPLIANCE"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#EB9B34", 
-    "tooltip": "lrml:Compliance",
-  },
-  {
-    "type": "constitutive_block",
-    "message0": "Constitutive %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_CONSTITUTIVE"
+        "name": "MEMBERS_APPLIEDSTATEMENT"
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
     "colour": "#5ba59f", 
-    "tooltip": "lrml:constitutive",
+    "tooltip": "lrml:appliedstatement",
   },
   {
-    "type": "prescriptive_block",
-    "message0": "Prescriptive %1",
+    "type": "rulestatement_block",
+    "message0": "RuleStatement %1",
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_PRESCRIPTIVE"
+        "name": "MEMBERS_RULESTATEMENT"
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
     "colour": "#5ba59f", 
-    "tooltip": "lrml:prescriptive",
-  },
-  {
-    "type": "override_block",
-    "message0": "Override %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_OVERRIDE"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#5ba59f", 
-    "tooltip": "lrml:override",
-  },
-  {
-    "type": "penalty_block",
-    "message0": "Penalty %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_PENALTY"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#5ba59f", 
-    "tooltip": "lrml:penalty",
-  },
-  {
-    "type": "reparation_block",
-    "message0": "Reparation %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_REPARATION"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#5ba59f", 
-    "tooltip": "lrml:reparation",
-  },
-  {
-    "type": "factual_block",
-    "message0": "Factual %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_FACTUAL"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#5ba59f", 
-    "tooltip": "lrml:factual",
-  },
+    "tooltip": "lrml:rulestatement",
+  }
 ]);

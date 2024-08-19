@@ -27,11 +27,26 @@ body {
   color: #000000 !important; /* Ensure it's white */
 }
 
+.CodeMirror .cm-def {
+  color: #000000 !important; /* Ensure it's white */
+}
+
+.CodeMirror .cm-variable-2 {
+  color: #000000 !important; /* Ensure it's white */
+}
+
 /* Override CodeMirror keyword color */
 .dark-theme .CodeMirror .cm-keyword {
   color: #ffffff !important; /* Ensure it's white */
 }
 
+.dark-theme .CodeMirror .cm-def {
+  color: #ffffff !important; /* Ensure it's white */
+}
+
+.dark-theme .CodeMirror .cm-variable-2 {
+  color: #ffffff !important; /* Ensure it's white */
+}
 
 /* Additional styles for dark mode in CodeMirror */
 
