@@ -140,6 +140,11 @@ export const toolbox = {
       ],
     },
     {
+      kind: "category",
+      name: "Dynamic Category",
+      contents: []
+    },
+    {
       kind: 'sep',
     },
     {

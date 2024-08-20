@@ -20,6 +20,7 @@ import DarkTheme from '@blockly/theme-dark';
 import "./blockly/blockGenerator";
 import "./blockly/extensions/validators";
 import "./blockly/blocks";
+import { updateDynamicCategory } from './blockly/dynamicCategory';
 // MUI _________________________________________
 import { Box } from "@mui/material";
 // CSS _________________________________________
@@ -91,6 +92,13 @@ function App() {
       // Initialise the content highlight plugin
       const contentHighlight = new ContentHighlight(ws);
       contentHighlight.init();
+
+      console.log("BEFORE APP TOOLBOX BELOW");
+      console.log(toolbox);
+      const modelOutput = "data(brick)";
+      updateDynamicCategory(ws, modelOutput);
+      console.log("APP TOOLBOX BELOW");
+      console.log(toolbox);
     }
   }, [ws]);
 
