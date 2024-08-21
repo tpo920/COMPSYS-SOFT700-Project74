@@ -328,6 +328,21 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "ruleml:Kind",
   },
   {
+    "type": "value_block",
+    "message0": "Value %1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "MEMBER_VALUE",
+        "text": ""
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#1B5E20", 
+    "tooltip": "ruleml:Value",
+  },
+  {
     "type": "obligation_block",
     "message0": "Obligation %1",
     "args0": [

@@ -100,6 +100,10 @@ export const toolbox = {
         {
           kind: 'block',
           type: 'kind_block'
+        },
+        {
+          kind: 'block',
+          type: 'value_block'
         }
       ],
     },
