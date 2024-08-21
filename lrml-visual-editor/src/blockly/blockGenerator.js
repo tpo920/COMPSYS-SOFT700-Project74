@@ -103,6 +103,11 @@ javascriptGenerator.forBlock['baseunit_block'] = function (block, generator) {
   const code = 'baseunit (\n' + statementMembers + '\n)';
   return code;
 };
+javascriptGenerator.forBlock['value_block'] = function (block) {
+  const value = block.getFieldValue('MEMBER_VALUE');
+  const code = `value(${value})`;
+  return code;
+};
 
 // Deontic category
 javascriptGenerator.forBlock['obligation_block'] = function (block, generator) {
