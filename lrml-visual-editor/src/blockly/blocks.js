@@ -11,7 +11,7 @@ Blockly.defineBlocksWithJsonArray([
       },
       {
         "type": "input_statement",
-        "name": "MEMBERS_IF"
+        "name": "MEMBER_IF"
       },
     ],
     "previousStatement": null,
@@ -28,7 +28,7 @@ Blockly.defineBlocksWithJsonArray([
       },
       {
         "type": "input_statement",
-        "name": "MEMBERS_THEN"
+        "name": "MEMBER_THEN"
       },
     ],
     "previousStatement": null,
@@ -42,7 +42,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_AND"
+        "name": "MEMBER_AND"
       }
     ],
     "previousStatement": null,
@@ -56,7 +56,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_OR"
+        "name": "MEMBER_OR"
       }
     ],
     "previousStatement": null,
@@ -70,7 +70,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_NOT"
+        "name": "MEMBER_NOT"
       }
     ],
     "previousStatement": null,
@@ -116,7 +116,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_EXPR"
+        "name": "MEMBER_EXPRESSION"
       }
     ],
     "previousStatement": null,
@@ -130,7 +130,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_ATOM"
+        "name": "MEMBER_ATOM"
       }
     ],
     "previousStatement": null,
@@ -144,7 +144,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "field_dropdown",
-        "name": "MEMBER_FUN",
+        "name": "MEMBER_FUNCTION",
         "options":[
           [
             "has",
@@ -188,7 +188,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "field_input",
-        "name": "MEMBER_REL",
+        "name": "MEMBER_RELATION",
         "text": ""
       }
     ],
@@ -206,7 +206,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "field_input",
-        "name": "MEMBER_VAR",
+        "name": "MEMBER_VARIABLE",
         "text": ""
       }
     ],
@@ -243,7 +243,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_BASEUNIT"
+        "name": "MEMBER_BASEUNIT"
       }
     ],
     "previousStatement": null,
@@ -348,7 +348,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_OBLIGATION"
+        "name": "MEMBER_OBLIGATION"
       }
     ],
     "previousStatement": null,
@@ -362,7 +362,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_PERMISSION"
+        "name": "MEMBER_PERMISSION"
       }
     ],
     "previousStatement": null,
@@ -376,7 +376,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_PROHIBITION"
+        "name": "MEMBER_PROHIBITION"
       }
     ],
     "previousStatement": null,
@@ -390,7 +390,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_APPLIEDSTATEMENT"
+        "name": "MEMBER_APPLIEDSTATEMENT"
       }
     ],
     "previousStatement": null,
@@ -404,7 +404,7 @@ Blockly.defineBlocksWithJsonArray([
     "args0": [
       {
         "type": "input_statement",
-        "name": "MEMBERS_RULESTATEMENT"
+        "name": "MEMBER_RULESTATEMENT"
       }
     ],
     "previousStatement": null,

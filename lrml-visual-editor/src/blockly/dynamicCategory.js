@@ -2,17 +2,24 @@ import * as Blockly from 'blockly/core';
 
 export function updateDynamicCategory(workspace) {
   const dynamicBlocks = [];
-  const modelOutput = "data(brick)";
+  const modelOutput = "if(and(expression(function(has),atom(variable(floorWaste)),data(diameter)),expression(function(greaterThan),atom(variable(diameter)),data(baseunit(prefix(milli),kind(metre)),value(40.0))))";
 
-  // Parse the modelOutput and create blocks dynamically
-  const match = modelOutput.match(/(\w+)\((.*?)\)/);
-  // if (match) {
-    const testBlock = match[1];
-    const blockType = match[1] + '_block';
-    const blockValue = match[2];
-    console.log("blocktype+value")
-    console.log(blockType);
-    console.log(blockValue);
+  // Define custom mappings for specific block types
+  const blockTypeMappings = {
+    'expression': 'expr',
+    'function': 'fun',
+    'variable': 'var',
+    'relation': 'rel'
+  };
+
+  // Regular expression to match the blocks and their fields
+  const regex = /(\w+)(?:\(([^()]+)\))?/g;
+  let match;
+
+  while ((match = regex.exec(modelOutput)) !== null) {
+    const blockName = match[1];
+    const memberValue = match[2];
+    const blockType = blockTypeMappings[blockName] ? blockTypeMappings[blockName] + '_block' : blockName + '_block';
 
     // Create a block JSON definition based on the modelOutput
     const blockJson = {
@@ -20,33 +27,15 @@ export function updateDynamicCategory(workspace) {
       "type": blockType,
       "fields": {}
     };
-    console.log("blockjson");
-    console.log(blockJson);
 
-    
-    // Dynamically set the field name and value
-    blockJson.fields["MEMBER_" + testBlock.toUpperCase()] = blockValue;
+    // If there's a member value, dynamically set the field name and value
+    if (memberValue) {
+      blockJson.fields["MEMBER_" + blockName.toUpperCase()] = memberValue;
+    }
 
     dynamicBlocks.push(blockJson);
-    return dynamicBlocks;
-    
+  }
 
-    //dynamicBlocks.push(blockJson);
-  // }
-
-  // // Update the dynamic category
-  // const toolbox = workspace.getToolbox();
-  // console.log("TOOLBOX BELOW");
-  // console.log(toolbox);
-  // // I think this line does not work, thus it is not setting the values within the correct category
-  // // const dynamicCategory = toolbox.getToolboxItems().find(category => category.name_ === 'Dynamic Category');
-  // const dynamicCategory = toolbox.getToolboxItems()[7];
-  // console.log("DYNAMIC CATEGORY BELOW");
-  // console.log(dynamicCategory);
-
-  // // if (dynamicCategory) {
-  //   dynamicCategory.updateFlyoutContents(dynamicBlocks);
-  //   console.log("DYNAMIC CATEGORY UPDATE BELOW");
-  //   console.log(dynamicCategory);
-  // // }
+  console.log(dynamicBlocks);
+  return dynamicBlocks;
 }

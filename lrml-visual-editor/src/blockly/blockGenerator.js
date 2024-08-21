@@ -3,13 +3,13 @@ import { javascriptGenerator } from 'blockly/javascript';
 // If Then category
 javascriptGenerator.forBlock['if_block'] = function(block, generator) {
   const ifStatementMembers =
-    generator.statementToCode(block, 'MEMBERS_IF');
+    generator.statementToCode(block, 'MEMBER_IF');
   const code = 'if (\n' + ifStatementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['then_block'] = function(block, generator) {
   const thenStatementMembers =
-    generator.statementToCode(block, 'MEMBERS_THEN');
+    generator.statementToCode(block, 'MEMBER_THEN');
   const code = 'then (\n' + thenStatementMembers + '\n)';
   return code;
 };
@@ -17,19 +17,19 @@ javascriptGenerator.forBlock['then_block'] = function(block, generator) {
 // Operator category
 javascriptGenerator.forBlock['and_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_AND');
+    generator.statementToCode(block, 'MEMBER_AND');
   const code = 'and (\n' + statementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['or_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_OR');
+    generator.statementToCode(block, 'MEMBER_OR');
   const code = 'or (\n' + statementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['not_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_NOT');
+    generator.statementToCode(block, 'MEMBER_NOT');
   const code = 'not (\n' + statementMembers + '\n)';
   return code;
 };
@@ -42,7 +42,7 @@ javascriptGenerator.forBlock['operator_block'] = function (block) {
 // Expression Category
 javascriptGenerator.forBlock['expr_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_EXPR');
+    generator.statementToCode(block, 'MEMBER_EXPRESSION');
   const code = 'expr (\n' + statementMembers + '\n)';
   return code;
 };
@@ -50,22 +50,22 @@ javascriptGenerator.forBlock['expr_block'] = function (block, generator) {
 // Atom category
 javascriptGenerator.forBlock['atom_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_ATOM');
+    generator.statementToCode(block, 'MEMBER_ATOM');
   const code = 'atom (\n' + statementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['fun_block'] = function (block) {
-  const value = block.getFieldValue('MEMBER_FUN');
+  const value = block.getFieldValue('MEMBER_FUNCTION');
   const code = `fun(${value})`;
   return code;
 };
 javascriptGenerator.forBlock['rel_block'] = function (block) {
-  const value = block.getFieldValue('MEMBER_REL');
+  const value = block.getFieldValue('MEMBER_RELATION');
   const code = `rel(${value})`;
   return code;
 };
 javascriptGenerator.forBlock['var_block'] = function (block) {
-  const value = block.getFieldValue('MEMBER_VAR');
+  const value = block.getFieldValue('MEMBER_VARIABLE');
   const code = `var(${value})`;
   return code;
 };
@@ -99,7 +99,7 @@ javascriptGenerator.forBlock['kind_block'] = function (block) {
 };
 javascriptGenerator.forBlock['baseunit_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_BASEUNIT');
+    generator.statementToCode(block, 'MEMBER_BASEUNIT');
   const code = 'baseunit (\n' + statementMembers + '\n)';
   return code;
 };
@@ -112,19 +112,19 @@ javascriptGenerator.forBlock['value_block'] = function (block) {
 // Deontic category
 javascriptGenerator.forBlock['obligation_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_OBLIGATION');
+    generator.statementToCode(block, 'MEMBER_OBLIGATION');
   const code = 'obligation (\n' + statementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['permission_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_PERMISSION');
+    generator.statementToCode(block, 'MEMBER_PERMISSION');
   const code = 'permission (\n' + statementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['prohibition_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_PROHIBITION');
+    generator.statementToCode(block, 'MEMBER_PROHIBITION');
   const code = 'prohibition (\n' + statementMembers + '\n)';
   return code;
 };
@@ -132,13 +132,13 @@ javascriptGenerator.forBlock['prohibition_block'] = function (block, generator) 
 // Statement category
 javascriptGenerator.forBlock['appliedstatement_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_APPLIEDSTATEMENT');
+    generator.statementToCode(block, 'MEMBER_APPLIEDSTATEMENT');
   const code = 'appliedstatement (\n' + statementMembers + '\n)';
   return code;
 };
 javascriptGenerator.forBlock['rulestatement_block'] = function (block, generator) {
   const statementMembers =
-    generator.statementToCode(block, 'MEMBERS_RULESTATEMENT');
+    generator.statementToCode(block, 'MEMBER_RULESTATEMENT');
   const code = 'rulestatement (\n' + statementMembers + '\n)';
   return code;
 };
