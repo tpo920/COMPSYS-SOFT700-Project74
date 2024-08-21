@@ -159,6 +159,10 @@ Blockly.defineBlocksWithJsonArray([
             "by"
           ],
           [
+            "exist",
+            "exist"
+          ],
+          [
             "greaterThan",
             "greaterThan"
           ],
