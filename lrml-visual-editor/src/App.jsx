@@ -95,8 +95,10 @@ function App() {
 
       console.log("BEFORE APP TOOLBOX BELOW");
       console.log(toolbox);
-      const modelOutput = "data(brick)";
-      updateDynamicCategory(ws, modelOutput);
+      //const modelOutput = "data(brick)";
+      ws.registerToolboxCategoryCallback(
+        'DYNAMIC_CATEGORY', updateDynamicCategory);
+      //updateDynamicCategory(ws, modelOutput);
       console.log("APP TOOLBOX BELOW");
       console.log(toolbox);
     }

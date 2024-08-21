@@ -142,6 +142,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Dynamic Category",
+      custom: "DYNAMIC_CATEGORY",
       contents: []
     },
     {

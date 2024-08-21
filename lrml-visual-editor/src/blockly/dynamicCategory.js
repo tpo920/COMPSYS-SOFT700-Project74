@@ -1,14 +1,16 @@
 import * as Blockly from 'blockly/core';
 
-export function updateDynamicCategory(workspace, modelOutput) {
+export function updateDynamicCategory(workspace) {
   const dynamicBlocks = [];
+  const modelOutput = "data(brick)";
 
   // Parse the modelOutput and create blocks dynamically
   const match = modelOutput.match(/(\w+)\((.*?)\)/);
-  if (match) {
+  // if (match) {
     const testBlock = match[1];
     const blockType = match[1] + '_block';
     const blockValue = match[2];
+    console.log("blocktype+value")
     console.log(blockType);
     console.log(blockValue);
 
@@ -18,27 +20,33 @@ export function updateDynamicCategory(workspace, modelOutput) {
       "type": blockType,
       "fields": {}
     };
-    console.log(blockJson)
+    console.log("blockjson");
+    console.log(blockJson);
+
     
     // Dynamically set the field name and value
     blockJson.fields["MEMBER_" + testBlock.toUpperCase()] = blockValue;
 
     dynamicBlocks.push(blockJson);
-  }
+    return dynamicBlocks;
+    
 
-  // Update the dynamic category
-  const toolbox = workspace.getToolbox();
-  console.log("TOOLBOX BELOW");
-  console.log(toolbox);
-  // I think this line does not work, thus it is not setting the values within the correct category
-  // const dynamicCategory = toolbox.getToolboxItems().find(category => category.name_ === 'Dynamic Category');
-  const dynamicCategory = toolbox.getToolboxItems()[7];
-  console.log("DYNAMIC CATEGORY BELOW");
-  console.log(dynamicCategory);
-
-  // if (dynamicCategory) {
-    dynamicCategory.updateFlyoutContents(dynamicBlocks);
-    console.log("DYNAMIC CATEGORY UPDATE BELOW");
-    console.log(dynamicCategory);
+    //dynamicBlocks.push(blockJson);
   // }
+
+  // // Update the dynamic category
+  // const toolbox = workspace.getToolbox();
+  // console.log("TOOLBOX BELOW");
+  // console.log(toolbox);
+  // // I think this line does not work, thus it is not setting the values within the correct category
+  // // const dynamicCategory = toolbox.getToolboxItems().find(category => category.name_ === 'Dynamic Category');
+  // const dynamicCategory = toolbox.getToolboxItems()[7];
+  // console.log("DYNAMIC CATEGORY BELOW");
+  // console.log(dynamicCategory);
+
+  // // if (dynamicCategory) {
+  //   dynamicCategory.updateFlyoutContents(dynamicBlocks);
+  //   console.log("DYNAMIC CATEGORY UPDATE BELOW");
+  //   console.log(dynamicCategory);
+  // // }
 }
