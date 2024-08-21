@@ -23,8 +23,7 @@ export function initBlocklyWithFlydown(workspace) {
   flydown.autoClose = true; // Flydown closes after selecting a block
 }
 
-export function showBlocklyFlydown(currentBlock) {
-  suggestBlocks(currentBlock);
+export function showBlocklyFlydown(currentBlock, modelBlockList) {
   const workspace = Blockly.common.getMainWorkspace();
   workspace.hideChaff();
   const flydown = workspace.flydown_;
@@ -37,7 +36,8 @@ export function showBlocklyFlydown(currentBlock) {
   flydown.setCSSClass('blocklyFlydown');
 
   // Test blocks to show
-  const blocksXml = getXml(currentBlock);
+  //const blocksXml = getXml(currentBlock);
+  const blocksXml = getModelXml(modelBlockList);
 
   // Calc position if xml list exists
   if (blocksXml !== '') {
@@ -51,6 +51,29 @@ export function showBlocklyFlydown(currentBlock) {
 
     flydown.showAt(blocksXMLList, xy.x, xy.y);
   }
+}
+
+function getModelXml(modelBlockList) {
+  console.log(modelBlockList);
+  const varRegex = /variable\(([^)]+)\)/;
+  const relRegex = /relation\(([^)]+)\)/;
+  const dataRegex = /data\(([^)]+)\)/;
+  let modelXml = ''
+  for (const block of modelBlockList) {
+    if (block.includes('variable')) {
+      const match = block.match(varRegex);
+      modelXml += '<block type=' + `"var_block"` + '>\n' + `<field name="MEMBER_VAR">` + `${match[1]}` + '</field>\n' + '</block>\n';
+    } else if (block.includes('relation')) {
+      const match = block.match(relRegex);
+      modelXml += '<block type=' + `"rel_block"` + '>\n' + `<field name="MEMBER_REL">` + `${match[1]}` + '</field>\n' + '</block>\n';
+    } else if (block.includes('data')) {
+      const match = block.match(dataRegex);
+      if (!match[1].includes('baseunit')) {
+        modelXml += '<block type=' + `"data_block"` + '>\n' + `<field name="MEMBER_DATA">` + `${match[1]}` + '</field>\n' + '</block>\n';
+      }
+    }
+  }
+  return '<xml>' + modelXml + '</xml>';
 }
 
 // Get xml block list

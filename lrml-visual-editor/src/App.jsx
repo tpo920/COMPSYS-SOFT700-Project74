@@ -16,7 +16,7 @@ import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 import { FixedEdgesMetricsManager } from '@blockly/fixed-edges';
 import { ContentHighlight } from '@blockly/workspace-content-highlight';
 import { initBlocklyWithFlydown, showBlocklyFlydown } from './blockly/flydown/blockFlydown';
-import { getBlocklrml } from './lrml/AutocompleteLrml';
+import { getBlocklrml, getRelevantBlocks } from './lrml/AutocompleteLrml';
 import DarkTheme from '@blockly/theme-dark';
 import "./blockly/blockGenerator";
 import "./blockly/extensions/validators";
@@ -124,11 +124,12 @@ function App() {
           // call api 
           const currentBlockLrml = getBlocklrml(block);
           const res = await fetchModel(currentBlockLrml, clause);
+          let modelBlockList;
           if (res) {
-            console.log(res);
+            modelBlockList = getRelevantBlocks(res);
           }
           // open flydown to show suggested blocks
-          showBlocklyFlydown(block);
+          showBlocklyFlydown(block, modelBlockList);
         }
         block["_lastClickTime"] = now;
       }
@@ -141,20 +142,28 @@ function App() {
       lrml: currentBlocks,
     });
 
+    // Development
     console.log(currentBlocks);
     console.log(currentClause);
-    await fetch(BASE_URL + '/predict', {
-      method: "POST",
-      body: BODY,
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    }).then((res) => {
-      res.json().then((data) => {
-        console.log(data);
-        return data;
-      }).catch((err) => {
-        console.log(err);
-      })
-    })
+
+    try {
+      const response = await fetch(BASE_URL + '/predict', {
+        method: "POST",
+        body: BODY,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.error('Fetch error:', err);
+      throw err;
+    }
   }
 
   // Set theme

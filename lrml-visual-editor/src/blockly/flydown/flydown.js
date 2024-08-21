@@ -189,6 +189,8 @@ Flydown.prototype.reflow = function () {
 
 function getFlydownHeightScale(length) {
   switch (length) {
+    case 0:
+      break;
     case 1:
       return 2;
     case 2:
