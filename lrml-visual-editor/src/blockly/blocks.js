@@ -143,38 +143,8 @@ Blockly.defineBlocksWithJsonArray([
     "message0": "Fun %1",
     "args0": [
       {
-        "type": "field_dropdown",
+        "type": "field_input",
         "name": "MEMBER_FUN",
-        "options":[
-          [
-            "has",
-            "has"
-          ],
-          [
-            "is",
-            "is"
-          ],
-          [
-            "by",
-            "by"
-          ],
-          [
-            "exist",
-            "exist"
-          ],
-          [
-            "greaterThan",
-            "greaterThan"
-          ],
-          [
-            "lessThan",
-            "lessThan"
-          ],
-          [
-            "asPer",
-            "asPer"
-          ]
-        ]
       }
     ],
     "previousStatement": null,
@@ -220,112 +190,18 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "data_block",
-    "message0": "Data %1 %2",
+    "message0": "Data %1",
     "args0": [
       {
         "type": "field_input",
         "name": "MEMBER_DATA",
         "text": ""
-      },
-      {
-        "type": "input_statement",
-        "name": "MEMBER_DATA2",
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
     "colour": "#66BB6A", 
     "tooltip": "ruleml:Data",
-  },
-  {
-    "type": "baseunit_block",
-    "message0": "BaseUnit %1",
-    "args0": [
-      {
-        "type": "input_statement",
-        "name": "MEMBERS_BASEUNIT"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#388E3C", 
-    "tooltip": "lrml:Baseunit",
-  },
-  {
-    "type": "prefix_block",
-    "message0": "Prefix %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "MEMBER_PREFIX",
-        "options":[
-          [
-            "kilo",
-            "kilo"
-          ],
-          [
-            "milli",
-            "milli"
-          ],
-          [
-            "mega",
-            "mega"
-          ]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#1B5E20", 
-    "tooltip": "ruleml:Prefix",
-  },
-  {
-    "type": "kind_block",
-    "message0": "Kind %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "MEMBER_KIND",
-        "options":[
-          [
-            "metre",
-            "metre"
-          ],
-          [
-            "gram",
-            "gram"
-          ],
-          [
-            "litre",
-            "litre"
-          ],
-          [
-            "newton",
-            "newton"
-          ],
-          [
-            "pascal",
-            "pascal"
-          ],
-          [
-            "angleDegree",
-            "angleDegree"
-          ],
-          [
-            "celsius",
-            "celsius"
-          ],
-          [
-            "hectare",
-            "hectare"
-          ],
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": "#1B5E20", 
-    "tooltip": "ruleml:Kind",
   },
   {
     "type": "obligation_block",
