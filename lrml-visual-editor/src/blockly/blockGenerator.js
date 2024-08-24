@@ -71,36 +71,9 @@ javascriptGenerator.forBlock['var_block'] = function (block) {
 };
 
 // Data category
-javascriptGenerator.forBlock['data_block'] = function (block, generator) {
+javascriptGenerator.forBlock['data_block'] = function (block) {
   const value = block.getFieldValue('MEMBER_DATA');
-  const statementMembers = generator.statementToCode(block, 'MEMBER_DATA2');
-  let code;
-  if (value && !statementMembers) {
-    code = `data(${value})`;
-  } else if (!value && statementMembers) {
-    code = `data {\n${statementMembers}\n}`;
-  } else if (value && statementMembers) {
-    code = `invalid data`;
-  } else {
-    code = `data()`
-  }
-  return code;
-};
-
-javascriptGenerator.forBlock['prefix_block'] = function (block) {
-  const value = block.getFieldValue('MEMBER_PREFIX');
-  const code = `prefix(${value})`;
-  return code;
-};
-javascriptGenerator.forBlock['kind_block'] = function (block) {
-  const value = block.getFieldValue('MEMBER_KIND');
-  const code = `kind(${value})`;
-  return code;
-};
-javascriptGenerator.forBlock['baseunit_block'] = function (block, generator) {
-  const statementMembers =
-    generator.statementToCode(block, 'MEMBER_BASEUNIT');
-  const code = 'baseunit (\n' + statementMembers + '\n)';
+  const code = `data(${value})`;
   return code;
 };
 javascriptGenerator.forBlock['value_block'] = function (block) {

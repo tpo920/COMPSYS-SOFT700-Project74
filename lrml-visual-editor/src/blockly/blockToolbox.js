@@ -89,22 +89,6 @@ export const toolbox = {
           kind: 'block',
           type: 'data_block'
         },
-        {
-          kind: 'block',
-          type: 'baseunit_block'
-        },
-        {
-          kind: 'block',
-          type: 'prefix_block'
-        },
-        {
-          kind: 'block',
-          type: 'kind_block'
-        },
-        {
-          kind: 'block',
-          type: 'value_block'
-        }
       ],
     },
     {
