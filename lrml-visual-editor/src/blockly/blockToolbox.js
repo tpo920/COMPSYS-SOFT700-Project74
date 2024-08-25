@@ -207,38 +207,8 @@ export const toolbox = {
                                     next: {
                                       block: {
                                         type: 'data_block',
-                                        inputs: {
-                                          MEMBER_DATA2: {
-                                            block: {
-                                              type: 'baseunit_block',
-                                              inputs: {
-                                                MEMBER_BASEUNIT: {
-                                                  block: {
-                                                    type: 'prefix_block',
-                                                    fields: {
-                                                      MEMBER_PREFIX: 'milli'
-                                                    },
-                                                    next: {
-                                                      block: {
-                                                        type: 'kind_block',
-                                                        fields: {
-                                                          MEMBER_KIND: 'metre'
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              },
-                                              next: {
-                                                block: {
-                                                  type: 'value_block',
-                                                  fields: {
-                                                    MEMBER_VALUE: '40.0'
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
+                                        fields: {
+                                          MEMBER_DATA: '40.0 mm'
                                         }
                                       }
                                     }

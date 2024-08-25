@@ -2,7 +2,7 @@ import * as Blockly from 'blockly/core';
 
 export function updateDynamicCategory(workspace) {
   const dynamicBlocks = [];
-  const modelOutput = "if(and(expression(function(has),atom(variable(floorWaste)),data(diameter)),expression(function(greaterThan),atom(variable(diameter)),data(baseunit(prefix(milli),kind(metre)),value(40.0))))";
+  const modelOutput = "if(and(expression(function(has),atom(variable(floorWaste)),data(diameter)),expression(function(greaterThan),atom(variable(diameter)),data(40.00 mm)))";
 
   // Define custom mappings for specific block types
   const blockTypeMappings = {
