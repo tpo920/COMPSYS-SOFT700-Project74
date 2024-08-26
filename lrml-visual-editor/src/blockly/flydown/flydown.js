@@ -199,6 +199,18 @@ function getFlydownHeightScale(length) {
       return 5;
     case 4:
       return 7;
+    case 5:
+      return 9;
+    case 6:
+      return 11;
+    case 7:
+      return 13;
+    case 8:
+      return 15;
+    case 9:
+      return 17;
+    case 10:
+      return 19;
     default:
       break;
   }

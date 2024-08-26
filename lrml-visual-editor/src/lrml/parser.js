@@ -3,7 +3,7 @@
  * @param blockList 
  */
 export function parseBlockList(blockList) {
-    const suggestedBlockList = [];
+    let suggestedBlockList = [];
     for (const block of blockList) {
         // Convert block into blockly format to be parsed into xml
         if (block.includes('(') && block.includes(')')) {
@@ -18,11 +18,16 @@ export function parseBlockList(blockList) {
     return suggestedBlockList.reverse();
 }
 
+/**
+ * Converts the model format back to a shortened format to be used for blockly
+ * @param {*} block 
+ * @returns block string
+ */
 function convertFullToShortLrmlTerm(block) {
     let currentBlock = block;
     switch (currentBlock) {
         case 'expression':
-            blocurrentBlockck = 'expr';
+            currentBlock = 'expr';
             break;
         case 'function':
             currentBlock = 'fun';
@@ -40,7 +45,7 @@ function convertFullToShortLrmlTerm(block) {
 }
 
 // Based off current block clicked, find next block in response
-export function getNextBlockFromResponse(currentBlockType, responseList) {
+export function getNextBlockFromResponse(currentBlockType, currentParentBlock, responseList) {
     let block = currentBlockType.replace('_block', '');
     switch (block) {
         case 'expr':
@@ -61,11 +66,28 @@ export function getNextBlockFromResponse(currentBlockType, responseList) {
 
     // Check each element of the array 
     let match = [];
+    // Iterates through each response from the array 
     responseList.forEach((expression) => {
         if (expression.includes(block)) {
-            const content = extractContent(expression, block);
-            if (content !== '' && (!match.includes(content))) {
-                match.push(content);
+            let contextualContent = [];
+            if (currentParentBlock.type === 'if_block') {
+                contextualContent = extractAllContent(expression, 'if');
+            } else if (currentParentBlock.type === 'then_block') {
+                contextualContent = extractAllContent(expression, 'then');
+            } else {
+                contextualContent = extractAllContent(expression, block);
+            }
+
+            if (contextualContent.length > 0) {
+                contextualContent.forEach((currentContent) => {
+                    let content = currentContent;
+                    if (currentContent.includes(block)) {
+                        content = extractContent(currentContent, block);
+                    }
+                    if (content !== '' && (!match.includes(content))) {
+                        match.push(content);
+                    }
+                });
             }
         }
     });
@@ -93,7 +115,6 @@ export function extractFirstParenthesesContent(inputString) {
         }
         result += inputString[i];
     }
-
     return result;
 }
 
@@ -124,6 +145,37 @@ export function extractContent(inputString, keyword) {
     }
     // Extract the content inside the brackets
     return inputString.slice(startIndex + 1, endIndex);
+}
+
+function extractAllContent(inputString, keyword) {
+    const keywordPattern = new RegExp(`${keyword}\\(`, 'g'); // Global pattern to find all occurrences of the keyword followed by '('
+    let matches = [];
+    let match;
+
+    while ((match = keywordPattern.exec(inputString)) !== null) {
+        let startIndex = match.index + match[0].length - 1; // Start after the keyword and '('
+        let openBrackets = 1;
+        let endIndex = startIndex;
+
+        // Iterate through the string starting from startIndex
+        for (let i = startIndex + 1; i < inputString.length; i++) {
+            if (inputString[i] === '(') {
+                openBrackets++;
+            } else if (inputString[i] === ')') {
+                openBrackets--;
+            }
+
+            if (openBrackets === 0) {
+                endIndex = i;
+                break;
+            }
+        }
+
+        // Extract the content inside the brackets and push it to the matches array
+        matches.push(inputString.slice(startIndex + 1, endIndex));
+    }
+
+    return matches.length > 0 ? matches : null; // Return all matches or null if none found
 }
 
 export function splitByComma(inputString) {

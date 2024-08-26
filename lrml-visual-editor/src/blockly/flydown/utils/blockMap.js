@@ -4,7 +4,7 @@
 export const blockMap = {
     // If
     if_block:               [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
-    then_block:             [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
+    then_block:             [false, [['obligation_block', ''], ['permission_block', ''], ['prohibition_block', ''], ['expr_block', '']]],
     // Operators
     and_block:              [true, [['expr_block', '']]],
     or_block:               [true, [['expr_block', '']]],
@@ -25,6 +25,6 @@ export const blockMap = {
     permission_block:       [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
     prohibition_block:      [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
     // Statement
-    rulestatement_block:    [false, [['if_block', ''], ['then_block', '']]],
-    appliedstatement_block: [false, [['if_block', ''], ['then_block', '']]],
+    rulestatement_block:    [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
+    appliedstatement_block: [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
 };

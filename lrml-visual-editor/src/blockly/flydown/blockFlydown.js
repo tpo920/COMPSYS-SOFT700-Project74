@@ -40,14 +40,15 @@ export function showBlocklyFlydown(currentBlock, response) {
   // currentBlockProperties[1] = An array containing hardcoded blocks for autocompletion
   if (currentBlockProperties[1].length > 0) {
     let blocksXml = getSuggestedBlockList(currentBlockProperties[1]);
-    // Check if block is suitable for model response
+    // Check if block is suitable for model response (True/False)
     if (currentBlockProperties[0]) {
-      // Check if response is not empty
+      // Check if response is not empty (response from calling model api)
       if (response !== '') {
         // Check response and compare with currentBlock
-        const modelBlockList = getModelBlocks(currentBlockProperties[1], currentBlockType, response);
-        blocksXml = getSuggestedBlockList(modelBlockList);  
-        console.log(modelBlockList);
+        const blockRes = getModelBlocks(currentBlockProperties[1], currentBlockType, getParentBlock(currentBlock), response);
+        if (blockRes.length > 0) {
+          blocksXml = getSuggestedBlockList(blockRes);
+        }
       }
     }
 
@@ -65,9 +66,10 @@ export function showBlocklyFlydown(currentBlock, response) {
     }
   }
 }
-
-function getModelBlocks(presetBlocks, currentBlock, response) {
-  const matchList = getNextBlockFromResponse(currentBlock, response);
+function getModelBlocks(currentBlockProperties, currentBlock, currentParentBlock, response) {
+  const matchList = getNextBlockFromResponse(currentBlock, currentParentBlock, response);
+  let autocompleteBlocks = [];
+  let validatedBlockList = []
   let blockList = [];
   if (matchList.length > 0) {
     matchList.forEach((match) => {
@@ -96,34 +98,35 @@ function getModelBlocks(presetBlocks, currentBlock, response) {
       }
     });
 
-    console.log(blockList);
     // Parse blocklist -> format to be constructed into xml
     blockList = parseBlockList(blockList);
     for (const block of blockList) {
       if (block[1] === '') {
-        let isExist = false;
-        for (const presetBlock of presetBlocks) {
+        let isExist;
+        for (const presetBlock of currentBlockProperties) {
           if (block[0] === presetBlock[0]) {
             isExist = true;
           }
         }
         if (!isExist) {
-          console.log(presetBlocks.includes(block));
-          presetBlocks.push(block);
+          validatedBlockList.push(block);
         }
         isExist = false;
       } else {
-        presetBlocks.push(block);
+        validatedBlockList.push(block);
       }
     }
+
+    // Combine two lists together
+    autocompleteBlocks = currentBlockProperties.concat(validatedBlockList);
   }
-  return (presetBlocks.reverse());
+  return (autocompleteBlocks.reverse());
 }
 
 // Get xml block list
 // input example: [['and_block', ''], ['or_block', ''], ['expr_block', '']]
 // where first element is the blocktype & second element is the possible field value
-export function getSuggestedBlockList(suggestedBlockList) {
+function getSuggestedBlockList(suggestedBlockList) {
   let blockXml = ''
   if (suggestedBlockList.length > 0) {
     blockXml =
@@ -148,4 +151,16 @@ function suggestBlocks(suggestedBlockList) {
     }
   }
   return blockXml;
+}
+
+function getParentBlock(currentBlock) {
+  let parentBlock = currentBlock;
+  let block = currentBlock;
+
+  // Iterate to get parents
+  while (block) {
+      parentBlock = block;
+      block = block.getSurroundParent();
+  }
+  return parentBlock;
 }
