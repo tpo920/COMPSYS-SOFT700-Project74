@@ -9,7 +9,7 @@ body {
 .editor-container {
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 580px;
 }
 
 .CodeMirror {

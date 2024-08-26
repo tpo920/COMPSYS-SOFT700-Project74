@@ -34,17 +34,12 @@ function ClauseInput({ clause, setClause, setResponse }) {
             component="form"
             noValidate
             autoComplete="off"
-            sx={{
-                display: "flex",
-                flexDirection: "row",
-                width: "24rem",
-            }}
         >
             <TextField
                 fullWidth
                 multiline
                 label="Natural Clauses"
-                rows={6}
+                rows={8}
                 variant="filled"
                 onChange={handleChange}
                 onBlur={handleOnBlur}

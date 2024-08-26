@@ -16,7 +16,6 @@ export function initBlocklyWithFlydown(workspace) {
       parentWorkspace: workspace,
     })
   );
-  // ***** [lyn, 10/05/2013] NEED TO WORRY ABOUT MULTIPLE BLOCKLIES! *****
   workspace.flydown_ = flydown;
   Blockly.utils.dom.insertAfter(flydown.createDom('blocklyFlydown'),
     workspace.svgBubbleCanvas_);
