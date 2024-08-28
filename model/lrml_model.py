@@ -44,5 +44,5 @@ def clean_pred(lrml):
     lrml = reverse_resolve_expressions(lrml, fix_errors=True, prefix=prefix)
     lrml = reverse_combine_rel_and_var(lrml, prefix=prefix)
     lrml = reverse_move_and_or_to_data_node(lrml)
-    lrml = reverse_units(lrml, prefix=prefix)
+    #lrml = reverse_units(lrml, prefix=prefix)
     return lrml
