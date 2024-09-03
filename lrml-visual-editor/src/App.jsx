@@ -141,8 +141,8 @@ function App() {
       <div id="pageContainer">
         <div className="blockly-workspace" ref={blocklyRef} />
         <Box sx={{ display: "flex", width: "20%", flexDirection: "column" }}>
-          <TextBox value={blockCode} />
           <ClauseInput clause={clause} setClause={setClause} setResponse={setResponse} />
+          <TextBox value={blockCode} />
         </Box>
       </div>
     </>
