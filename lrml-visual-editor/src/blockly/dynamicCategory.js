@@ -1,8 +1,8 @@
 import * as Blockly from 'blockly/core';
 
 export function updateDynamicCategory(workspace) {
-  const dynamicBlocks = [];
-  const modelOutput = "if(and(expression(function(has),atom(variable(floorWaste)),data(diameter)),expression(function(greaterThan),atom(variable(diameter)),data(40.00 mm)))";
+  // const modelOutput = "if(and(expression(function(has))))";
+  const modelOutput = "if(and(expression(function(has))))";
 
   // Define custom mappings for specific block types
   const blockTypeMappings = {
@@ -12,30 +12,60 @@ export function updateDynamicCategory(workspace) {
     'relation': 'rel'
   };
 
+  // Define custom mappings for MEMBER fields
+  const memberMappings = {
+    'if': 'MEMBER_IF',
+    'and': 'MEMBER_AND',
+    'expr': 'MEMBER_EXPRESSION',
+    'fun': 'MEMBER_FUNCTION'  // Fixed the MEMBER for function
+  };
+
   // Regular expression to match the blocks and their fields
   const regex = /(\w+)(?:\(([^()]+)\))?/g;
   let match;
 
+  // Helper function to create a block JSON definition
+  function createBlockJson(type, memberValue = null) {
+    const blockJson = {
+      "kind": "block",
+      "type": type + '_block',
+      "fields": {}
+    };
+    const memberField = memberMappings[type];
+    if (memberField && memberValue) {
+      blockJson.fields[memberField] = memberValue;
+    }
+    return blockJson;
+  }
+
+  // Parse modelOutput and build a nested block structure
+  const stack = [];
+  let currentBlock = null;
+
   while ((match = regex.exec(modelOutput)) !== null) {
     const blockName = match[1];
     const memberValue = match[2];
-    const blockType = blockTypeMappings[blockName] ? blockTypeMappings[blockName] + '_block' : blockName + '_block';
+    const blockType = blockTypeMappings[blockName] ? blockTypeMappings[blockName] : blockName;
 
-    // Create a block JSON definition based on the modelOutput
-    const blockJson = {
-      "kind": "block",
-      "type": blockType,
-      "fields": {}
-    };
+    const newBlock = createBlockJson(blockType, memberValue);
 
-    // If there's a member value, dynamically set the field name and value
-    if (memberValue) {
-      blockJson.fields["MEMBER_" + blockName.toUpperCase()] = memberValue;
+    if (currentBlock) {
+      if (!currentBlock.inputs) {
+        currentBlock.inputs = {};
+      }
+      // Ensure the correct MEMBER field is applied to the current block for its child
+      const inputName = memberMappings[currentBlock.type.replace('_block', '')] || `MEMBER_${currentBlock.type.toUpperCase()}`;
+      currentBlock.inputs[inputName] = { block: newBlock };
     }
 
-    dynamicBlocks.push(blockJson);
+    stack.push(newBlock);
+    currentBlock = newBlock;
   }
 
-  console.log(dynamicBlocks);
-  return dynamicBlocks;
+  // Return the top-level block, which is the root of the nested structure
+  // const rootBlock = stack[0];
+  // console.log(rootBlock);
+  // return rootBlock;
+  stack.splice(1);
+  return stack;
 }

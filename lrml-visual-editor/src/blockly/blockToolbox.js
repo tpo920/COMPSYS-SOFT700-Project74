@@ -137,95 +137,68 @@ export const toolbox = {
       kind: "category",
       name: "Test Category",
       contents: [
+        // {
+        //   kind: 'block',
+        //   type: 'if_block',
+        //   inputs: {
+        //     MEMBER_IF: {
+        //       block: {
+        //         type: 'and_block',
+        //         inputs: {
+        //           MEMBER_AND: {
+        //             block: {
+        //               type: 'expr_block',
+        //               inputs: {
+        //                 MEMBER_EXPRESSION: {
+        //                   block: {
+        //                     type: 'fun_block',
+        //                     fields: {
+        //                       MEMBER_FUNCTION: 'has',
+        //                     }
+        //                   }
+        //                 }
+        //               }
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
         {
-          kind: 'block',
-          type: 'if_block',
-          inputs: {
-            MEMBER_IF: {
-              block: {
-                type: 'and_block',
-                inputs: {
-                  MEMBER_AND: {
-                    block: {
-                      type: 'expr_block',
-                      inputs: {
-                        MEMBER_EXPRESSION: {
-                          block: {
-                            type: 'fun_block',
-                            fields: {
-                              MEMBER_FUNCTION: 'has',
-                            },
-                            next: {
-                              block: {
-                                type: 'atom_block',
-                                inputs: {
-                                  MEMBER_ATOM: {
-                                    block: {
-                                      type: 'var_block',
-                                      fields: {
-                                        MEMBER_VARIABLE: 'floorWaste'
-                                      }
-                                    }
-                                  }
-                                },
-                                next: {
-                                  block: {
-                                    type: 'data_block',
-                                    fields: {
-                                      MEMBER_DATA: 'diameter',
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                          },
-                        }
-                      },
-                      next: {
-                        block: {
-                          type: 'expr_block',
-                          inputs: {
-                            MEMBER_EXPRESSION: {
-                              block: {
-                                type: 'fun_block',
-                                fields: {
-                                  MEMBER_FUNCTION: 'greaterThan',
-                                },
-                                next: {
-                                  block: {
-                                    type: 'atom_block',
-                                    inputs: {
-                                      MEMBER_ATOM: {
-                                        block: {
-                                          type: 'var_block',
-                                          fields: {
-                                            MEMBER_VARIABLE: 'diameter'
+          "kind": "block",
+          "type": "if_block",
+          "fields": {},
+          "inputs": {
+              "MEMBER_IF": {
+                  "block": {
+                      "kind": "block",
+                      "type": "and_block",
+                      "fields": {},
+                      "inputs": {
+                          "MEMBER_AND": {
+                              "block": {
+                                  "kind": "block",
+                                  "type": "expr_block",
+                                  "fields": {},
+                                  "inputs": {
+                                      "MEMBER_EXPRESSION": {
+                                          "block": {
+                                              "kind": "block",
+                                              "type": "fun_block",
+                                              "fields": {
+                                                  "MEMBER_FUNCTION": "has"
+                                              }
                                           }
-                                        }
                                       }
-                                    },
-                                    next: {
-                                      block: {
-                                        type: 'data_block',
-                                        fields: {
-                                          MEMBER_DATA: '40.0 mm'
-                                        }
-                                      }
-                                    }
                                   }
-                                },
-                              },
-                            }
-                          },
-                        }
+                              }
+                          }
                       }
-                    }
                   }
-                }
               }
-            }
           }
-        }
+      }
       ]
     },
     {
