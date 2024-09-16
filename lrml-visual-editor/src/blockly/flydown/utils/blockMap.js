@@ -6,7 +6,7 @@ export const blockMap = {
     if_block:               [false, [['and_block', ''], ['or_block', ''], ['expr_block', '']]],
     then_block:             [false, [['obligation_block', ''], ['permission_block', ''], ['prohibition_block', ''], ['expr_block', '']]],
     // Operators
-    and_block:              [true, [['expr_block', '']]],
+    and_block:              [true, [['expr_block', ''], ['obligation_block', '']]],
     or_block:               [true, [['expr_block', '']]],
     not_block:              [true, [['expr_block', '']]],
     operator_block:         [false, []],
