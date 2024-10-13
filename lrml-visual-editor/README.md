@@ -1,4 +1,4 @@
-## Front End - Visual Editor
+# Front End - Visual Editor
 After cloning your fork of this repository and navigating to the `lrml-visual-editor` directory, use these commands to run the application in your desktop
 
 ```sh
