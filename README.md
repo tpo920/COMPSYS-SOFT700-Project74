@@ -2,7 +2,7 @@
 A P4P Engineering research project at The University of Auckland. To address LegalRuleML’s usability issues and complexity, this research project investigates the research and development of a visual LegalRuleML editor built with a deep learning model trained on legal clauses to automate manual translation tasks with intelligent auto-completion.
 
 ## 💾 Development
-This project uses:
+This frontend uses:
 - [React.js](https://react.dev) & [Vite](https://vitejs.dev) for the front-end and server tooling
 - [Blockly](https://developers.google.com/blockly) to integrate the visual editor
 - [CodeMirror](https://codemirror.net/) for code editor components
