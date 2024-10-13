@@ -1,8 +1,20 @@
-# React + Vite
+## Front End - Visual Editor
+After cloning your fork of this repository and navigating to the `lrml-visual-editor` directory, use these commands to run the application in your desktop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```sh
+# Change to project directory
+cd <project-name>
 
-Currently, two official plugins are available:
+# Change to lrml-visual-editor directory
+cd lrml-visual-editor
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# To install required dependencies
+npm install
+
+# Locally run the production build
+npm run dev
+
+# Create a build & preview
+npm run build
+npm run preview
+```
